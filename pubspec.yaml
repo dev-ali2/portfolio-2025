@@ -25,6 +25,8 @@ dependencies:
   animated_toggle_switch:
   loading_animation_widget:
   flutter_dotenv:
+  google_fonts:
+  intl:
 
 
 
