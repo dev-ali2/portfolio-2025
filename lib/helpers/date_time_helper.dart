@@ -9,6 +9,7 @@ class DateTimeHelper extends GetxController {
   var monthName = ''.obs;
   var year = ''.obs;
   var timeAmPm = ''.obs;
+  var combinedDate = ''.obs;
 
   @override
   void onInit() {
@@ -34,7 +35,10 @@ class DateTimeHelper extends GetxController {
     dayName.value = DateFormat('EEEE').format(currentDateTime.value);
     monthName.value = DateFormat('MMMM').format(currentDateTime.value);
     year.value = DateFormat('yyyy').format(currentDateTime.value);
-    timeAmPm.value = DateFormat('hh:mm:ss a').format(currentDateTime.value);
+    timeAmPm.value =
+        DateFormat('hh:mm:ss a').format(currentDateTime.value).toLowerCase();
+    combinedDate.value =
+        DateFormat('d MMMM, yyyy').format(currentDateTime.value);
 
     update(['timer']);
   }

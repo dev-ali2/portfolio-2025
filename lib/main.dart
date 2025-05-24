@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      color: ColorsHelper.canvasColor,
+      color: ColorsHelper.defaultCanvasColor,
       child: GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          color: ColorsHelper.canvasColor,
+          color: ColorsHelper.defaultCanvasColor,
           theme: ThemeHelper.darkTheme,
           title: 'Flutter Demo',
           home: const MainCanvasScreen()),

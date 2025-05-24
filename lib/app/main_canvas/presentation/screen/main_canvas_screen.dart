@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/screens/d_landing_page.dart';
+import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
@@ -18,9 +19,22 @@ class MainCanvasScreen extends StatelessWidget {
         builder: (controller) {
           controller.setSize(MediaQuery.of(context).size.width,
               MediaQuery.of(context).size.height);
-          return const Scaffold(
-            backgroundColor: ColorsHelper.canvasColor,
-            body: DLandingPage(),
+          return Scaffold(
+            backgroundColor: ColorsHelper.defaultCanvasColor,
+            body: const SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  DTopbar(),
+                  DLandingPage(),
+                  // DLandingPage(),
+                  //  DLandingPage(),
+                  // DLandingPage(),
+                  //    DLandingPage(),
+                  //  DLandingPage(),
+                ],
+              ),
+            ),
           );
         });
   }

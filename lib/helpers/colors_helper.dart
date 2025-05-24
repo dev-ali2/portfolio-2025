@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ColorsHelper {
-  static const Color canvasColor = Color(0xFF1A1A1A);
+  static const Color defaultPrimaryColor = Colors.green;
+  // static const Color canvasColor = Color.fromARGB(255, 0, 24, 28);
+  static Color defaultCanvasColor =
+      Color.lerp(Colors.black, defaultPrimaryColor, 0.05)!;
 }
