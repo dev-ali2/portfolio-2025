@@ -2,8 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
+import 'package:portfolio_2025/app/about/presentation/screens/d_about_page.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/screens/d_landing_page.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
+import 'package:portfolio_2025/app/tech/presentation/screens/d_tech_page.dart';
+import 'package:portfolio_2025/app/work/presentation/screens/d_projects_page.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
@@ -22,16 +25,15 @@ class MainCanvasScreen extends StatelessWidget {
           return Scaffold(
             backgroundColor: ColorsHelper.defaultCanvasColor,
             body: const SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   DTopbar(),
                   DLandingPage(),
-                  // DLandingPage(),
-                  //  DLandingPage(),
-                  // DLandingPage(),
-                  //    DLandingPage(),
-                  //  DLandingPage(),
+                  DAboutPage(),
+                  DTechPage(),
+                  DProjectsPage()
                 ],
               ),
             ),

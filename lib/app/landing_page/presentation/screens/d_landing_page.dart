@@ -27,28 +27,29 @@ class _DLandingPageState extends State<DLandingPage>
               vsync: this,
               behaviour: RandomParticleBehaviour(
                   options: const ParticleOptions(
-                spawnMaxRadius: 10,
-                spawnMinSpeed: 20,
-                spawnMaxSpeed: 30,
-                particleCount: 60,
+                spawnMaxRadius: 70,
+                spawnMinSpeed: 10,
+                spawnMaxSpeed: 12,
+                particleCount: 7,
                 baseColor: ColorsHelper.defaultPrimaryColor,
                 opacityChangeRate: 0.1,
-                spawnMinRadius: 10,
+                spawnMinRadius: 40,
               )),
               child: const SizedBox.shrink()),
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
             child: ClipRRect(
               child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                 child: Container(
                   width: double.maxFinite,
-                  padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 60, vertical: 20),
                   decoration: BoxDecoration(
                       border: Border.all(
                           color: ColorsHelper.defaultPrimaryColor.withAlpha(60),
                           width: 2),
-                      color: Colors.black.withAlpha(100),
+                      color: Colors.grey.withAlpha(10),
                       borderRadius: BorderRadius.circular(15)),
                   child: const Column(
                     spacing: 20,

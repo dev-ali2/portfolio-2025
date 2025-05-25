@@ -14,7 +14,7 @@ class BottomQuickInfo extends StatelessWidget {
         Row(
           spacing: 10,
           children: [
-            Text(
+            SelectableText(
               '~3',
               style: FontsHelper.fontUbuntu.copyWith(
                   color: ColorsHelper.defaultPrimaryColor,
@@ -24,14 +24,14 @@ class BottomQuickInfo extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   textAlign: TextAlign.left,
                   'Years',
                   style: FontsHelper.fontUbuntu.copyWith(
                     fontSize: 19,
                   ),
                 ),
-                Text('Experience',
+                SelectableText('Experience',
                     style: FontsHelper.fontUbuntu.copyWith(
                       fontSize: 19,
                     ))
@@ -42,7 +42,7 @@ class BottomQuickInfo extends StatelessWidget {
         Row(
           spacing: 10,
           children: [
-            Text(
+            SelectableText(
               '20+',
               style: FontsHelper.fontUbuntu.copyWith(
                   color: ColorsHelper.defaultPrimaryColor,
@@ -52,14 +52,14 @@ class BottomQuickInfo extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   textAlign: TextAlign.left,
                   'Projects',
                   style: FontsHelper.fontUbuntu.copyWith(
                     fontSize: 19,
                   ),
                 ),
-                Text('Completed',
+                SelectableText('Completed',
                     style: FontsHelper.fontUbuntu.copyWith(
                       fontSize: 19,
                     ))
@@ -70,7 +70,7 @@ class BottomQuickInfo extends StatelessWidget {
         Row(
           spacing: 10,
           children: [
-            Text(
+            SelectableText(
               '8+',
               style: FontsHelper.fontUbuntu.copyWith(
                   color: ColorsHelper.defaultPrimaryColor,
@@ -80,14 +80,14 @@ class BottomQuickInfo extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                SelectableText(
                   textAlign: TextAlign.left,
                   'Open-Souce',
                   style: FontsHelper.fontUbuntu.copyWith(
                     fontSize: 19,
                   ),
                 ),
-                Text('Contributions',
+                SelectableText('Contributions',
                     style: FontsHelper.fontUbuntu.copyWith(
                       fontSize: 19,
                     ))

@@ -31,7 +31,7 @@ class RightSectionWidget extends StatelessWidget {
                     color: ColorsHelper.defaultPrimaryColor.withAlpha(200))),
           ),
           const SizedBox(
-            height: 25,
+            height: 40,
           ),
           Align(
             alignment: Alignment.center,
@@ -42,12 +42,17 @@ class RightSectionWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   backgroundColor:
-                      ColorsHelper.defaultPrimaryColor.withAlpha(60),
+                      ColorsHelper.defaultPrimaryColor.withAlpha(30),
                   foregroundColor: Colors.white,
                   overlayColor:
                       ColorsHelper.defaultPrimaryColor.withAlpha(255)),
               onPressed: () {},
-              label: const Text('Download Resume'),
+              label: Text(
+                'Download Resume',
+                style: FontsHelper.fontUbuntu.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               icon: const Icon(Icons.download_rounded),
             ),
           )
