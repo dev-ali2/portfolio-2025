@@ -38,18 +38,10 @@ class DTopbar extends StatelessWidget {
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
                     return Center(
-                      child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          onHover: (event) {},
-                          child: TextButton(
-                            style: TextButton.styleFrom(
-                                foregroundColor:
-                                    ColorsHelper.defaultPrimaryColor),
-                            onPressed: () {},
-                            child: Text(DTopbarOptions.topbarItems[index].title,
-                                style: FontsHelper.fontUbuntu.copyWith(
-                                    fontSize: 17, color: Colors.white)),
-                          )),
+                      child: _AnimatedTextButton(
+                        text: DTopbarOptions.topbarItems[index].title,
+                        onPressed: () {},
+                      ),
                     );
                   },
                   separatorBuilder: (context, index) {
@@ -58,6 +50,46 @@ class DTopbar extends StatelessWidget {
                   itemCount: DTopbarOptions.topbarItems.length),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _AnimatedTextButton extends StatefulWidget {
+  final String text;
+  final VoidCallback onPressed;
+
+  const _AnimatedTextButton({
+    required this.text,
+    required this.onPressed,
+  });
+
+  @override
+  State<_AnimatedTextButton> createState() => _AnimatedTextButtonState();
+}
+
+class _AnimatedTextButtonState extends State<_AnimatedTextButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: TextButton(
+        style: TextButton.styleFrom(
+          overlayColor: Colors.transparent,
+        ),
+        onPressed: widget.onPressed,
+        child: AnimatedDefaultTextStyle(
+          duration: const Duration(milliseconds: 200),
+          style: FontsHelper.fontUbuntu.copyWith(
+            fontSize: 18,
+            fontWeight: _isHovered ? FontWeight.bold : FontWeight.normal,
+            color: _isHovered ? ColorsHelper.defaultPrimaryColor : Colors.white,
+          ),
+          child: Text(widget.text),
         ),
       ),
     );

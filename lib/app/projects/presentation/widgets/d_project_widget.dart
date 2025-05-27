@@ -28,20 +28,12 @@ class DProjectWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 gradient: LinearGradient(
                   colors: [
-                    ColorsHelper.defaultPrimaryColor.withAlpha(100),
-                    ColorsHelper.defaultPrimaryColor.withAlpha(50)
+                    ColorsHelper.defaultPrimaryColor.withAlpha(30),
+                    ColorsHelper.defaultPrimaryColor.withAlpha(30)
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 )),
-            child: Center(
-                child: Text(
-              'Pizza 47',
-              style: FontsHelper.fontUbuntu.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 27,
-                  color: Colors.white),
-            )),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -52,7 +44,8 @@ class DProjectWidget extends StatelessWidget {
                 width: 5,
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: ColorsHelper.defaultPrimaryColor.withAlpha(50)),
@@ -69,7 +62,8 @@ class DProjectWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: ColorsHelper.defaultPrimaryColor.withAlpha(50)),
@@ -86,7 +80,8 @@ class DProjectWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: ColorsHelper.defaultPrimaryColor.withAlpha(50)),
@@ -104,9 +99,20 @@ class DProjectWidget extends StatelessWidget {
               ),
             ],
           ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 13),
+              child: SelectableText('App Name',
+                  style: FontsHelper.fontUbuntu.copyWith(
+                      color: ColorsHelper.defaultPrimaryColor,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: Text(
+            child: SelectableText(
               'This is a pizza app very good and ui friendly made purely on flutter and for backend I donut know which thing i used.',
               style: FontsHelper.fontUbuntu
                   .copyWith(color: Colors.white, fontSize: 18),

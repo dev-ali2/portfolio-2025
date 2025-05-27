@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_2025/app/work/presentation/widgets/d_project_widget.dart';
+import 'package:portfolio_2025/app/projects/presentation/widgets/d_project_widget.dart';
 import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
