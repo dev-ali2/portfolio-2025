@@ -17,7 +17,7 @@ class BottomQuickInfo extends StatelessWidget {
             SelectableText(
               '~3',
               style: FontsHelper.fontUbuntu.copyWith(
-                  color: ColorsHelper.defaultPrimaryColor,
+                  color: Colors.white,
                   fontSize: 27,
                   fontWeight: FontWeight.bold),
             ),

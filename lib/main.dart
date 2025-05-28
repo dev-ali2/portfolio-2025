@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        // padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         color: ColorsHelper.defaultCanvasColor,
         child: GetMaterialApp(
           actions: {
