@@ -11,9 +11,9 @@ class DProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: Column(
-        spacing: 30,
+        spacing: 60,
         mainAxisSize: MainAxisSize.min,
         children: [
           const PagesHeader(title: 'Featured work'),
@@ -21,8 +21,6 @@ class DProjectsPage extends StatelessWidget {
             spacing: 40,
             alignment: WrapAlignment.start,
             children: [
-              DProjectWidget(),
-              DProjectWidget(),
               DProjectWidget(),
               DProjectWidget(),
               DProjectWidget(),
@@ -41,32 +39,32 @@ class DProjectsPage extends StatelessWidget {
             ),
             icon: const Icon(Icons.arrow_downward_rounded),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 45),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: SelectableText(
-                'Open source contributions',
-                style: FontsHelper.fontUbuntu.copyWith(
-                    decorationColor: ColorsHelper.defaultPrimaryColor,
-                    fontSize: 30,
-                    color: ColorsHelper.defaultPrimaryColor,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          const Wrap(
-            spacing: 40,
-            alignment: WrapAlignment.start,
-            children: [
-              DProjectWidget(),
-              DProjectWidget(),
-              DProjectWidget(),
-              DProjectWidget(),
-              DProjectWidget(),
-              DProjectWidget(),
-            ],
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.symmetric(horizontal: 45),
+          //   child: Align(
+          //     alignment: Alignment.centerLeft,
+          //     child: SelectableText(
+          //       'Open source contributions',
+          //       style: FontsHelper.fontUbuntu.copyWith(
+          //           decorationColor: ColorsHelper.defaultPrimaryColor,
+          //           fontSize: 30,
+          //           color: ColorsHelper.defaultPrimaryColor,
+          //           fontWeight: FontWeight.bold),
+          //     ),
+          //   ),
+          // ),
+          // const Wrap(
+          //   spacing: 40,
+          //   alignment: WrapAlignment.start,
+          //   children: [
+          //     DProjectWidget(),
+          //     DProjectWidget(),
+          //     DProjectWidget(),
+          //     DProjectWidget(),
+          //     DProjectWidget(),
+          //     DProjectWidget(),
+          //   ],
+          // ),
         ],
       ),
     );

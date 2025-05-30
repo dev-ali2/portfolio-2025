@@ -9,55 +9,55 @@ class DTechPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: const Column(
-        spacing: 30,
+        spacing: 60,
         mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           PagesHeader(title: 'Tech stack'),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 70),
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              children: [
-                TechImageWidget(
-                  image: 'assets/tech/flutter.png',
-                  title: 'Flutter',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/kotlin.png',
-                  title: 'Kotlin',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/js.webp',
-                  title: 'JavaScript',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/node.webp',
-                  title: 'Node.js',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/api.png',
-                  title: 'REST APIs',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/firebase.png',
-                  title: 'Firebase',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/supabase.png',
-                  title: 'Supabase',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/appwrite.webp',
-                  title: 'App-Write',
-                ),
-                TechImageWidget(
-                  image: 'assets/tech/github.png',
-                  title: 'GitHub',
-                ),
-              ],
-            ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 40,
+            runSpacing: 40,
+            children: [
+              TechImageWidget(
+                image: 'assets/tech/flutter.png',
+                title: 'Flutter',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/kotlin.png',
+                title: 'Kotlin',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/js.webp',
+                title: 'JavaScript',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/node.webp',
+                title: 'Node.js',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/api.png',
+                title: 'REST APIs',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/firebase.png',
+                title: 'Firebase',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/supabase.png',
+                title: 'Supabase',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/appwrite.webp',
+                title: 'App-Write',
+              ),
+              TechImageWidget(
+                image: 'assets/tech/github.png',
+                title: 'GitHub',
+              ),
+            ],
           )
         ],
       ),

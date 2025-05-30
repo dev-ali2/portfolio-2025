@@ -9,12 +9,10 @@ class DBlogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-      ),
+      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: const Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: 30,
+        spacing: 60,
         children: [
           PagesHeader(title: 'Recent blogs'),
           Wrap(

@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeHelper.darkTheme,
           title: 'Flutter Demo',
           home: AnimatedPrimaryScrollController(
-              // animationFactory: const ChromiumImpulse(),
-              animationFactory: const ChromiumEaseInOut(),
+              animationFactory: const ChromiumImpulse(),
+              // animationFactory: const ChromiumEaseInOut(),
               child: Builder(builder: (context) => const MainCanvasScreen())
 
               // child: const MainCanvasScreen())),

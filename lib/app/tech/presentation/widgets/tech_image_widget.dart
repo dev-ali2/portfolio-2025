@@ -61,17 +61,17 @@ class _TechImageWidgetState extends State<TechImageWidget> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-          margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
+          // margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
           padding: const EdgeInsets.all(4),
-          height: 80,
+          height: 70,
           width: _maxWidth,
           decoration: BoxDecoration(
-            color: Colors.grey.withAlpha(40),
-            borderRadius: BorderRadius.circular(10),
-            border: isHovering
-                ? Border.all(color: ColorsHelper.defaultPrimaryColor, width: 2)
-                : null,
-          ),
+              color: ColorsHelper.secondaryCanvasColor,
+              borderRadius: BorderRadius.circular(80),
+              border: isHovering
+                  ? Border.all(
+                      color: ColorsHelper.defaultPrimaryColor, width: 3)
+                  : null),
           child: Stack(
             children: [
               AnimatedPositioned(
@@ -81,7 +81,10 @@ class _TechImageWidgetState extends State<TechImageWidget> {
                 top: 0,
                 bottom: 0,
                 width: 80,
-                child: Image.asset(widget.image, fit: BoxFit.fitHeight),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 7),
+                  child: Image.asset(widget.image, fit: BoxFit.fitHeight),
+                ),
               ),
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 300),
@@ -96,7 +99,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
                     child: Text(
                       '${widget.title}  ',
                       style: FontsHelper.fontUbuntu.copyWith(
-                          color: Colors.white,
+                          color: ColorsHelper.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                     ),

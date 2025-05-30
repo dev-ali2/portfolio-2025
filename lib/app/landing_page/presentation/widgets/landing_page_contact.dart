@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:portfolio_2025/core/common/widgets/contact_icon_btn.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 
 class LandingPageContact extends StatelessWidget {
@@ -14,82 +15,21 @@ class LandingPageContact extends StatelessWidget {
       spacing: 15,
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          height: 50,
-          width: 50,
-          child: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: IconButton(
-                style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.all(
-                        ColorsHelper.defaultPrimaryColor.withAlpha(50)),
-                    elevation: WidgetStateProperty.all(5),
-                    backgroundColor:
-                        WidgetStateProperty.all(Colors.white.withAlpha(20))),
-                onPressed: () {},
-                icon: const Icon(BoxIcons.bxl_gmail),
-              ),
-            ),
-          ),
+        ContactIconBtn(
+          icon: BoxIcons.bxl_gmail,
+          size: 50,
         ),
-        SizedBox(
-          height: 50,
-          width: 50,
-          child: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: IconButton(
-                style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.all(
-                        ColorsHelper.defaultPrimaryColor.withAlpha(50)),
-                    elevation: WidgetStateProperty.all(5),
-                    backgroundColor:
-                        WidgetStateProperty.all(Colors.white.withAlpha(20))),
-                onPressed: () {},
-                icon: const Icon(BoxIcons.bxl_github),
-              ),
-            ),
-          ),
+        ContactIconBtn(
+          icon: BoxIcons.bxl_github,
+          size: 50,
         ),
-        SizedBox(
-          height: 50,
-          width: 50,
-          child: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: IconButton(
-                style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.all(
-                        ColorsHelper.defaultPrimaryColor.withAlpha(50)),
-                    elevation: WidgetStateProperty.all(5),
-                    backgroundColor:
-                        WidgetStateProperty.all(Colors.white.withAlpha(20))),
-                onPressed: () {},
-                icon: const Icon(BoxIcons.bxl_linkedin),
-              ),
-            ),
-          ),
+        ContactIconBtn(
+          icon: BoxIcons.bxl_linkedin,
+          size: 50,
         ),
-        SizedBox(
-          height: 50,
-          width: 50,
-          child: ClipRRect(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: IconButton(
-                style: ButtonStyle(
-                    overlayColor: WidgetStateProperty.all(
-                        ColorsHelper.defaultPrimaryColor.withAlpha(50)),
-                    elevation: WidgetStateProperty.all(5),
-                    backgroundColor: WidgetStateProperty.all(
-                      Colors.white.withAlpha(20),
-                    )),
-                onPressed: () {},
-                icon: const Icon(BoxIcons.bxl_whatsapp),
-              ),
-            ),
-          ),
+        ContactIconBtn(
+          icon: BoxIcons.bxl_whatsapp,
+          size: 50,
         ),
         SizedBox(
           height: 50,
@@ -97,13 +37,6 @@ class LandingPageContact extends StatelessWidget {
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
               child: ElevatedButton.icon(
-                // style: ElevatedButton.styleFrom(
-                //     foregroundColor: WidgetStateProperty.all(Colors.white),
-                //     overlayColor: WidgetStateProperty.all(
-                //         ColorsHelper.defaultPrimaryColor.withAlpha(50)),
-                //     elevation: WidgetStateProperty.all(5),
-                //     backgroundColor: WidgetStateProperty.all(
-                //         ColorsHelper.defaultPrimaryColor.withAlpha(50))),
                 style: ButtonStyle(
                     overlayColor: WidgetStateProperty.all(
                         ColorsHelper.defaultPrimaryColor.withAlpha(50)),

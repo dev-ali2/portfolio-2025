@@ -3,18 +3,23 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_2025/app/about/presentation/screens/d_about_page.dart';
 import 'package:portfolio_2025/app/blog/presentation/screens/d_blog_page.dart';
 import 'package:portfolio_2025/app/contact/presentation/screens/d_contact_page.dart';
 import 'package:portfolio_2025/app/experience/presentation/screens/d_experience_page.dart';
+import 'package:portfolio_2025/app/footer/presentation/widget/d_footer.dart';
+import 'package:portfolio_2025/app/landing_page/presentation/screens/d_landing_page.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/landing_page_contact.dart';
 import 'package:portfolio_2025/app/projects/presentation/widgets/blinking_down_circle_widget.dart';
 import 'package:portfolio_2025/app/tech/presentation/screens/d_tech_page.dart';
 import 'package:portfolio_2025/app/projects/presentation/screens/d_projects_page.dart';
+import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
+import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
 // Isolate message classes for communication
@@ -251,7 +256,7 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
           controller.setSize(MediaQuery.of(context).size.width,
               MediaQuery.of(context).size.height);
           return Scaffold(
-            backgroundColor: ColorsHelper.defaultCanvasColor,
+            backgroundColor: ColorsHelper.canvasColor,
             body: Stack(
               children: [
                 MouseRegion(
@@ -263,59 +268,14 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            Container(
-                              width: MqHelper.width,
-                              height: MqHelper.height,
-                              decoration: const BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage('assets/jpgs/bg_img.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              child: Container(
-                                child: Center(
-                                  child: Column(
-                                    spacing: 40,
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'ALI RAZA',
-                                        style: GoogleFonts.poppins(
-                                            wordSpacing: 15,
-                                            height: 0.8,
-                                            fontSize: 100,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        'Software Engineer, Front end & APP Developer',
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 30,
-                                          height: 0.8,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      const LandingPageContact(),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const Positioned(top: 10, child: DTopbar()),
-                            const Positioned(
-                                bottom: 10, child: BlinkingDownArrowCircle())
-                          ],
-                        ),
+                        DLandingPage(),
                         const DAboutPage(),
                         const DTechPage(),
                         const DProjectsPage(),
                         const DExperiencePage(),
                         const DBlogPage(),
-                        const DContactPage()
+                        const DContactPage(),
+                        DFooter(),
                       ],
                     ),
                   ),

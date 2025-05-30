@@ -7,4 +7,5 @@ class FontsHelper {
   static TextStyle titleNameFont = GoogleFonts.roboto();
   static TextStyle animatedTextsFont = GoogleFonts.sourceCodePro();
   static TextStyle landingPageQuoteFont = GoogleFonts.pacifico();
+  static TextStyle poppinsFont = GoogleFonts.poppins();
 }

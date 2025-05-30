@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_2025/app/contact/presentation/widgets/d_contact_page_options.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/landing_page_contact.dart';
+import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
@@ -10,47 +12,24 @@ class DContactPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: const EdgeInsets.only(top: 20),
+      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        spacing: 30,
+        spacing: 60,
         children: [
-          Align(
-            alignment: Alignment.center,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SelectableText(
-                  textAlign: TextAlign.center,
-                  'Have a project in mind?\nLet\'s collaborate and bring it to life.',
-                  style: FontsHelper.landingPageQuoteFont.copyWith(
-                      fontSize: 30,
-                      color: ColorsHelper.defaultPrimaryColor.withAlpha(255),
-                      fontWeight: FontWeight.w600),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const LandingPageContact(),
-                Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                    margin: const EdgeInsets.only(top: 40),
-                    decoration: const BoxDecoration(),
-                    width: double.maxFinite,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SelectableText(
-                          'Made in ❤️ with Flutter',
-                          style: FontsHelper.fontUbuntu
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ))
-              ],
-            ),
-          )
+          SizedBox(
+            height: 50,
+          ),
+          SelectableText(
+            textAlign: TextAlign.center,
+            'Let\'s make your users say "Wow", not "Why?".',
+            style: FontsHelper.fontUbuntu.copyWith(
+                fontSize: 30,
+                wordSpacing: 5,
+                color: ColorsHelper.defaultPrimaryColor.withAlpha(255),
+                fontWeight: FontWeight.bold),
+          ),
+          DContactPageOptions(),
         ],
       ),
     );

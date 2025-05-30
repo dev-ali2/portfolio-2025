@@ -64,17 +64,6 @@ class _BlinkingDownArrowCircleState extends State<BlinkingDownArrowCircle>
       decoration: BoxDecoration(
         color: widget.circleColor,
         shape: BoxShape.circle,
-        // border: Border.all(
-        //   color: widget.borderColor,
-        //   width: widget.borderWidth,
-        // ),
-        // boxShadow: [
-        //   BoxShadow(
-        //     color: Colors.black.withOpacity(0.1),
-        //     blurRadius: 8,
-        //     spreadRadius: 2,
-        //   ),
-        // ],
       ),
       child: Center(
         child: AnimatedBuilder(
