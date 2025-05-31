@@ -1,14 +1,8 @@
-import 'dart:ui';
 
-import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/bottom_quick_info.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/date_time_widget.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/landing_page_contact.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/left_section_widget.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/right_section_widget.dart';
 import 'package:portfolio_2025/app/projects/presentation/widgets/blinking_down_circle_widget.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';

@@ -9,7 +9,7 @@ class DTechPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: const Column(
         spacing: 60,
         mainAxisSize: MainAxisSize.min,

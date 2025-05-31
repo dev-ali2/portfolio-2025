@@ -10,7 +10,7 @@ class PagesHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 150, left: 30, right: 30, bottom: 60),
+      margin: const EdgeInsets.only(top: 150, left: 30, right: 30, bottom: 60),
       child: Align(
         alignment: Alignment.centerLeft,
         child: SelectableText(title,

@@ -10,39 +10,43 @@ class DExperiencePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: Column(
-        spacing: 60,
+        spacing: 40,
         mainAxisSize: MainAxisSize.min,
         children: [
           const PagesHeader(title: 'Work Experience'),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-            margin: EdgeInsets.symmetric(
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+            margin: const EdgeInsets.symmetric(
               horizontal: 30,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                    color: ColorsHelper.defaultPrimaryColor.withAlpha(200),
-                    width: 2)),
+                // borderRadius: BorderRadius.circular(15),
+                // border: Border.all(
+                //     color: ColorsHelper.defaultPrimaryColor.withAlpha(200),
+                //     width: 2)
+
+                borderRadius: BorderRadius.circular(35),
+                color: ColorsHelper.secondaryCanvasColor),
             child: ListTile(
               horizontalTitleGap: 15,
               style: ListTileStyle.list,
               isThreeLine: true,
               subtitle: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '(2020-2025)',
+                        '(2020---2025)',
                         style: FontsHelper.fontUbuntu
                             .copyWith(color: Colors.grey, fontSize: 12),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SelectableText(
@@ -66,32 +70,36 @@ Integrated RESTful APIs, Firebase FCM services, implemented state management sol
             ),
           ),
           Container(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-            margin: EdgeInsets.symmetric(
+            padding:
+                const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+            margin: const EdgeInsets.symmetric(
               horizontal: 30,
             ),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(
-                    color: ColorsHelper.defaultPrimaryColor.withAlpha(200),
-                    width: 2)),
+                // borderRadius: BorderRadius.circular(15),
+                // border: Border.all(
+                //     color: ColorsHelper.defaultPrimaryColor.withAlpha(200),
+                //     width: 2)
+
+                borderRadius: BorderRadius.circular(35),
+                color: ColorsHelper.secondaryCanvasColor),
             child: ListTile(
               horizontalTitleGap: 15,
               style: ListTileStyle.list,
               isThreeLine: true,
               subtitle: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        '(2020-2025)',
+                        '(2020---2025)',
                         style: FontsHelper.fontUbuntu
                             .copyWith(color: Colors.grey, fontSize: 12),
                       )),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SelectableText(

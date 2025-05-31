@@ -3,23 +3,16 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/state_manager.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_2025/app/about/presentation/screens/d_about_page.dart';
 import 'package:portfolio_2025/app/blog/presentation/screens/d_blog_page.dart';
 import 'package:portfolio_2025/app/contact/presentation/screens/d_contact_page.dart';
 import 'package:portfolio_2025/app/experience/presentation/screens/d_experience_page.dart';
 import 'package:portfolio_2025/app/footer/presentation/widget/d_footer.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/screens/d_landing_page.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/landing_page_contact.dart';
-import 'package:portfolio_2025/app/projects/presentation/widgets/blinking_down_circle_widget.dart';
 import 'package:portfolio_2025/app/tech/presentation/screens/d_tech_page.dart';
 import 'package:portfolio_2025/app/projects/presentation/screens/d_projects_page.dart';
-import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
-import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
 // Isolate message classes for communication
@@ -263,18 +256,18 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
                   onHover: (event) {
                     _updateMousePosition(event.position);
                   },
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
+                  child: const SingleChildScrollView(
+                    physics: BouncingScrollPhysics(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         DLandingPage(),
-                        const DAboutPage(),
-                        const DTechPage(),
-                        const DProjectsPage(),
-                        const DExperiencePage(),
-                        const DBlogPage(),
-                        const DContactPage(),
+                        DAboutPage(),
+                        DTechPage(),
+                        DProjectsPage(),
+                        DExperiencePage(),
+                        DBlogPage(),
+                        DContactPage(),
                         DFooter(),
                       ],
                     ),

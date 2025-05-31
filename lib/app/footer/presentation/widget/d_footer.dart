@@ -9,7 +9,7 @@ class DFooter extends StatelessWidget {
     return Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         margin: const EdgeInsets.only(top: 40),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.black45,
         ),
         width: double.maxFinite,

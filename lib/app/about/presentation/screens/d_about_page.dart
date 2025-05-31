@@ -11,13 +11,13 @@ class DAboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: Column(
         spacing: 60,
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          PagesHeader(title: 'About Me'),
+          const PagesHeader(title: 'About Me'),
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -25,13 +25,13 @@ class DAboutPage extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 100 + (MqHelper.width * MqHelper.height * 0.0001),
-                backgroundColor: Colors.red,
+                backgroundColor: ColorsHelper.white,
               ),
               Column(
                 mainAxisSize: MainAxisSize.min,
                 spacing: 30,
                 children: [
-                  Container(
+                  SizedBox(
                     width: MqHelper.width * 0.5,
                     child: SelectableText(
                         formatParagraphWithSpacing(

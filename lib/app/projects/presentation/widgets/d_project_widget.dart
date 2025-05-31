@@ -15,9 +15,11 @@ class DProjectWidget extends StatelessWidget {
       // height: 500,
       width: 350,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-              color: ColorsHelper.defaultPrimaryColor.withAlpha(120))),
+          borderRadius: BorderRadius.circular(15),
+          // border: Border.all(
+          //     color: ColorsHelper.defaultPrimaryColor.withAlpha(120))
+          border:
+              Border.all(color: ColorsHelper.secondaryCanvasColor, width: 2)),
       child: Column(
         spacing: 10,
         mainAxisSize: MainAxisSize.min,
@@ -27,15 +29,17 @@ class DProjectWidget extends StatelessWidget {
             height: 200,
             width: 350,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
-                  colors: [
-                    ColorsHelper.defaultPrimaryColor.withAlpha(30),
-                    ColorsHelper.defaultPrimaryColor.withAlpha(30)
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )),
+              borderRadius: BorderRadius.circular(10),
+              // gradient: LinearGradient(
+              //   colors: [
+              //     ColorsHelper.defaultPrimaryColor.withAlpha(30),
+              //     ColorsHelper.defaultPrimaryColor.withAlpha(30)
+              //   ],
+              //   begin: Alignment.topLeft,
+              //   end: Alignment.bottomRight,
+              // )
+              color: ColorsHelper.white,
+            ),
             child: Stack(
               children: [
                 Positioned(
@@ -47,15 +51,14 @@ class DProjectWidget extends StatelessWidget {
                         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
                         child: Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: ColorsHelper.secondaryCanvasColor
-                                  .withAlpha(200)),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+                              borderRadius: BorderRadius.circular(30),
+                              color: ColorsHelper.secondaryCanvasColor),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 7),
                           child: Text(
                             'Open Source',
                             style: FontsHelper.fontUbuntu.copyWith(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w500,
                                 color: ColorsHelper.white),
                           ),
                         ),
@@ -77,11 +80,11 @@ class DProjectWidget extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
-                    color: ColorsHelper.secondaryCanvasColor.withAlpha(200)),
-                child: Row(
+                    color: ColorsHelper.secondaryCanvasColor),
+                child: const Row(
                   spacing: 8,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.android,
                       color: Colors.green,
                     ),
@@ -99,10 +102,10 @@ class DProjectWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: ColorsHelper.secondaryCanvasColor.withAlpha(200)),
-                child: Row(
+                child: const Row(
                   spacing: 8,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.apple,
                       color: Colors.white,
                     ),
@@ -120,10 +123,10 @@ class DProjectWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: ColorsHelper.secondaryCanvasColor.withAlpha(200)),
-                child: Row(
+                child: const Row(
                   spacing: 8,
                   children: [
-                    const Icon(
+                    Icon(
                       CupertinoIcons.globe,
                       color: Colors.blue,
                     ),
@@ -177,6 +180,9 @@ class DProjectWidget extends StatelessWidget {
           SizedBox(
             width: 200,
             child: TextButton(
+                style: TextButton.styleFrom(
+                    overlayColor:
+                        ColorsHelper.defaultPrimaryColor.withAlpha(50)),
                 onPressed: () {},
                 child: Text(
                   'View Info',

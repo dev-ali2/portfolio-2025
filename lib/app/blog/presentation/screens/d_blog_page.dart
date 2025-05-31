@@ -9,7 +9,7 @@ class DBlogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      padding: EdgeInsets.only(left: 30, right: 30, bottom: 60),
+      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
       child: const Column(
         mainAxisSize: MainAxisSize.min,
         spacing: 60,
@@ -17,9 +17,8 @@ class DBlogPage extends StatelessWidget {
           PagesHeader(title: 'Recent blogs'),
           Wrap(
             spacing: 40,
-            alignment: WrapAlignment.start,
+            alignment: WrapAlignment.center,
             children: [
-              BlogTileWidget(),
               BlogTileWidget(),
               BlogTileWidget(),
               BlogTileWidget(),

@@ -15,19 +15,19 @@ class LandingPageContact extends StatelessWidget {
       spacing: 15,
       mainAxisSize: MainAxisSize.min,
       children: [
-        ContactIconBtn(
+        const ContactIconBtn(
           icon: BoxIcons.bxl_gmail,
           size: 50,
         ),
-        ContactIconBtn(
+        const ContactIconBtn(
           icon: BoxIcons.bxl_github,
           size: 50,
         ),
-        ContactIconBtn(
+        const ContactIconBtn(
           icon: BoxIcons.bxl_linkedin,
           size: 50,
         ),
-        ContactIconBtn(
+        const ContactIconBtn(
           icon: BoxIcons.bxl_whatsapp,
           size: 50,
         ),

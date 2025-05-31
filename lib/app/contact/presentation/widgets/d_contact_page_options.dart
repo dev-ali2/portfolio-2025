@@ -1,17 +1,14 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio_2025/core/common/widgets/contact_icon_btn.dart';
-import 'package:portfolio_2025/helpers/colors_helper.dart';
 
 class DContactPageOptions extends StatelessWidget {
   const DContactPageOptions({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       spacing: 20,
       mainAxisSize: MainAxisSize.min,
       children: [

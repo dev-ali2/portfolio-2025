@@ -12,8 +12,10 @@ class BlogTileWidget extends StatelessWidget {
       width: 350,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(
-              color: ColorsHelper.defaultPrimaryColor.withAlpha(200))),
+          // border: Border.all(
+          //     color: ColorsHelper.defaultPrimaryColor.withAlpha(200))
+          border:
+              Border.all(color: ColorsHelper.secondaryCanvasColor, width: 2)),
       child: Column(
         spacing: 15,
         mainAxisSize: MainAxisSize.min,
@@ -24,14 +26,15 @@ class BlogTileWidget extends StatelessWidget {
             width: 350,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                gradient: LinearGradient(
-                  colors: [
-                    ColorsHelper.defaultPrimaryColor.withAlpha(30),
-                    ColorsHelper.defaultPrimaryColor.withAlpha(30)
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                )),
+                // gradient: LinearGradient(
+                //   colors: [
+                //     ColorsHelper.defaultPrimaryColor.withAlpha(30),
+                //     ColorsHelper.defaultPrimaryColor.withAlpha(30)
+                //   ],
+                //   begin: Alignment.topLeft,
+                //   end: Alignment.bottomRight,
+                // ),
+                color: ColorsHelper.white),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),

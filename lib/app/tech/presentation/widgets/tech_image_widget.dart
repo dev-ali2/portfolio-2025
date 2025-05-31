@@ -61,7 +61,6 @@ class _TechImageWidgetState extends State<TechImageWidget> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-          // margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 30),
           padding: const EdgeInsets.all(4),
           height: 70,
           width: _maxWidth,
@@ -70,40 +69,24 @@ class _TechImageWidgetState extends State<TechImageWidget> {
               borderRadius: BorderRadius.circular(80),
               border: isHovering
                   ? Border.all(
-                      color: ColorsHelper.defaultPrimaryColor, width: 3)
+                      color: ColorsHelper.defaultPrimaryColor, width: 2)
                   : null),
-          child: Stack(
+          child: Row(
             children: [
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-                left: isHovering ? 0 : (_maxWidth - 80) / 2,
-                top: 0,
-                bottom: 0,
-                width: 80,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 7),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
+                child: SizedBox(
+                  width: 64,
                   child: Image.asset(widget.image, fit: BoxFit.fitHeight),
                 ),
               ),
-              AnimatedPositioned(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-                left: isHovering ? 90 : _maxWidth,
-                top: 0,
-                bottom: 0,
-                child: Center(
-                  child: AnimatedOpacity(
-                    duration: const Duration(milliseconds: 300),
-                    opacity: isHovering ? 1.0 : 0.0,
-                    child: Text(
-                      '${widget.title}  ',
-                      style: FontsHelper.fontUbuntu.copyWith(
-                          color: ColorsHelper.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16),
-                    ),
-                  ),
+              Expanded(
+                child: Text(
+                  widget.title,
+                  style: FontsHelper.fontUbuntu.copyWith(
+                      color: ColorsHelper.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 ),
               ),
             ],
