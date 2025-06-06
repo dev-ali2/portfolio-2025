@@ -3,15 +3,17 @@ import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
+import 'package:get/get.dart';
 import 'package:portfolio_2025/app/about/presentation/screens/d_about_page.dart';
 import 'package:portfolio_2025/app/blog/presentation/screens/d_blog_page.dart';
 import 'package:portfolio_2025/app/contact/presentation/screens/d_contact_page.dart';
 import 'package:portfolio_2025/app/experience/presentation/screens/d_experience_page.dart';
 import 'package:portfolio_2025/app/footer/presentation/widget/d_footer.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/screens/d_landing_page.dart';
+import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
 import 'package:portfolio_2025/app/tech/presentation/screens/d_tech_page.dart';
 import 'package:portfolio_2025/app/projects/presentation/screens/d_projects_page.dart';
+import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
@@ -93,6 +95,7 @@ class MainCanvasScreen extends StatefulWidget {
 
 class _MainCanvasScreenState extends State<MainCanvasScreen>
     with TickerProviderStateMixin {
+  final dataController = Get.find<DataController>();
   late AnimationController _elasticController;
   late Animation<double> _scaleAnimation;
 
@@ -254,79 +257,86 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
               children: [
                 MouseRegion(
                   onHover: (event) {
-                    _updateMousePosition(event.position);
+                    if (dataController.siteData!.followMousePosition) {
+                      _updateMousePosition(event.position);
+                    }
                   },
-                  child: const SingleChildScrollView(
-                    physics: BouncingScrollPhysics(),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        DLandingPage(),
-                        DAboutPage(),
-                        DTechPage(),
-                        DProjectsPage(),
-                        DExperiencePage(),
-                        DBlogPage(),
-                        DContactPage(),
-                        DFooter(),
-                      ],
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: GetBuilder<MqHelper>(
+                      id: 'canvas options',
+                      builder: (controller) => const Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          DLandingPage(),
+                          DAboutPage(),
+                          DTechPage(),
+                          DProjectsPage(),
+                          DExperiencePage(),
+                          DBlogPage(),
+                          DContactPage(),
+                          DFooter(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                ValueListenableBuilder<Offset>(
-                  valueListenable: _currentPositionNotifier,
-                  builder: (context, currentPosition, child) {
-                    return ValueListenableBuilder<bool>(
-                      valueListenable: _isNearTargetNotifier,
-                      builder: (context, isNearTarget, child) {
-                        return AnimatedBuilder(
-                          animation: _scaleAnimation,
-                          builder: (context, child) {
-                            return Positioned(
-                              left: currentPosition.dx + _offsetX,
-                              top: currentPosition.dy + _offsetY,
-                              child: IgnorePointer(
-                                child: Transform.scale(
-                                  scale: _scaleAnimation.value,
-                                  child: Container(
-                                    width: _circleSize,
-                                    height: _circleSize,
-                                    decoration: BoxDecoration(
-                                      color: isNearTarget
-                                          ? ColorsHelper.defaultPrimaryColor
-                                              .withAlpha(230)
-                                          : Colors.transparent,
-                                      shape: BoxShape.circle,
-                                      boxShadow: isNearTarget
-                                          ? [
-                                              BoxShadow(
-                                                color: ColorsHelper
-                                                    .defaultPrimaryColor
-                                                    .withAlpha(255),
-                                                blurRadius: 12,
-                                                spreadRadius: 3,
-                                              )
-                                            ]
-                                          : [
-                                              BoxShadow(
-                                                color: ColorsHelper
-                                                    .defaultPrimaryColor
-                                                    .withAlpha(170),
-                                                blurRadius: 6,
-                                                spreadRadius: 1,
-                                              )
-                                            ],
+                if (dataController.siteData!.followMousePosition)
+                  ValueListenableBuilder<Offset>(
+                    valueListenable: _currentPositionNotifier,
+                    builder: (context, currentPosition, child) {
+                      return ValueListenableBuilder<bool>(
+                        valueListenable: _isNearTargetNotifier,
+                        builder: (context, isNearTarget, child) {
+                          return AnimatedBuilder(
+                            animation: _scaleAnimation,
+                            builder: (context, child) {
+                              return Positioned(
+                                left: currentPosition.dx + _offsetX,
+                                top: currentPosition.dy + _offsetY,
+                                child: IgnorePointer(
+                                  child: Transform.scale(
+                                    scale: _scaleAnimation.value,
+                                    child: Container(
+                                      width: _circleSize,
+                                      height: _circleSize,
+                                      decoration: BoxDecoration(
+                                        color: isNearTarget
+                                            ? ColorsHelper.defaultPrimaryColor
+                                                .withAlpha(230)
+                                            : Colors.transparent,
+                                        shape: BoxShape.circle,
+                                        boxShadow: isNearTarget
+                                            ? [
+                                                BoxShadow(
+                                                  color: ColorsHelper
+                                                      .defaultPrimaryColor
+                                                      .withAlpha(255),
+                                                  blurRadius: 12,
+                                                  spreadRadius: 3,
+                                                )
+                                              ]
+                                            : [
+                                                BoxShadow(
+                                                  color: ColorsHelper
+                                                      .defaultPrimaryColor
+                                                      .withAlpha(170),
+                                                  blurRadius: 6,
+                                                  spreadRadius: 1,
+                                                )
+                                              ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    );
-                  },
-                ),
+                              );
+                            },
+                          );
+                        },
+                      );
+                    },
+                  ),
+                const Positioned(top: 10, child: DTopbar())
               ],
             ),
           );

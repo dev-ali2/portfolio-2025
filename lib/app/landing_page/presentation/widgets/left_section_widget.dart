@@ -45,7 +45,7 @@ class LeftSectionWidget extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const LandingPageContact(),
+        LandingPageContact(),
       ],
     );
   }

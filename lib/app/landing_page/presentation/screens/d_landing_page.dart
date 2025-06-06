@@ -1,9 +1,11 @@
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
+import 'package:portfolio_2025/app/landing_page/presentation/widgets/bottom_quick_info.dart';
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/landing_page_contact.dart';
-import 'package:portfolio_2025/app/projects/presentation/widgets/blinking_down_circle_widget.dart';
+import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
@@ -16,6 +18,7 @@ class DLandingPage extends StatefulWidget {
 
 class _DLandingPageState extends State<DLandingPage>
     with SingleTickerProviderStateMixin {
+  final dataController = Get.find<DataController>();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -24,9 +27,9 @@ class _DLandingPageState extends State<DLandingPage>
         Container(
           width: MqHelper.width,
           height: MqHelper.height,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/jpgs/bg_img.jpg'),
+              image: MemoryImage(dataController.imageData ?? Uint8List(0)),
               fit: BoxFit.cover,
             ),
           ),
@@ -38,7 +41,7 @@ class _DLandingPageState extends State<DLandingPage>
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SelectableText(
-                    'ALI RAZA',
+                    dataController.siteData?.landingPageModel.name ?? '',
                     style: GoogleFonts.poppins(
                         color: ColorsHelper.white,
                         wordSpacing: 15,
@@ -47,7 +50,9 @@ class _DLandingPageState extends State<DLandingPage>
                         fontWeight: FontWeight.bold),
                   ),
                   SelectableText(
-                    'Software Engineer, Front end & APP Developer',
+                    dataController
+                            .siteData?.landingPageModel.shortDescription ??
+                        '',
                     style: GoogleFonts.poppins(
                       color: ColorsHelper.white,
                       fontSize: 30,
@@ -55,14 +60,19 @@ class _DLandingPageState extends State<DLandingPage>
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const LandingPageContact(),
+                  if (dataController.siteData!.contactSection.isEnabled)
+                    LandingPageContact(),
                 ],
               ),
             ),
           ),
         ),
-        const Positioned(top: 10, child: DTopbar()),
-        const Positioned(bottom: 10, child: BlinkingDownArrowCircle())
+        //  const Positioned(top: 10, child: DTopbar()),
+        // const Positioned(bottom: 10, child: BlinkingDownArrowCircle())
+        const Positioned(
+          bottom: 20,
+          child: BottomQuickInfo(),
+        ),
       ],
     );
   }

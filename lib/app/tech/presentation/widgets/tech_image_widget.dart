@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,6 +15,7 @@ class TechImageWidget extends StatefulWidget {
 }
 
 class _TechImageWidgetState extends State<TechImageWidget> {
+  final dataController = Get.find<DataController>();
   bool isHovering = false;
   double _maxWidth = 90;
 
@@ -56,7 +59,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
       child: GestureDetector(
         onTap: () async {
           await launchUrl(Uri.parse(
-              'https://www.google.com/search?q=what+is+${widget.title}'));
+              'https://www.google.com/search?q=${dataController.siteData!.tech.prependTextOnClick.replaceAll(' ', '+')}+${widget.title}'));
         },
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
@@ -77,7 +80,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
                 padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 8),
                 child: SizedBox(
                   width: 64,
-                  child: Image.asset(widget.image, fit: BoxFit.fitHeight),
+                  child: Image.network(widget.image, fit: BoxFit.fitHeight),
                 ),
               ),
               Expanded(

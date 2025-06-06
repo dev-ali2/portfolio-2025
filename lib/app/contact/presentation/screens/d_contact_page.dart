@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:portfolio_2025/app/contact/presentation/widgets/d_contact_page_options.dart';
+import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
@@ -8,53 +10,40 @@ class DContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 60,
-        children: [
-          const SizedBox(
-            height: 50,
-          ),
-          SelectableText.rich(
-            textAlign: TextAlign.center,
-            TextSpan(
-              style: FontsHelper.fontUbuntu.copyWith(
-                fontSize: 30,
-                wordSpacing: 3,
-                color: ColorsHelper.white,
-                // fontWeight: FontWeight.bold
-              ),
+    final dataController = Get.find<DataController>();
+    return dataController.siteData!.contactSection.isEnabled
+        ? Container(
+            width: double.maxFinite,
+            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 60,
               children: [
-                const TextSpan(text: 'Let\'s make your users say '),
-                TextSpan(
-                  text: 'Wow',
-                  style: FontsHelper.fontUbuntu.copyWith(
-                    fontSize: 30,
-                    wordSpacing: 5,
-                    color: ColorsHelper.defaultPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                const SizedBox(
+                  height: 50,
                 ),
-                const TextSpan(text: ', not '),
-                TextSpan(
-                  text: 'Why?',
-                  style: FontsHelper.fontUbuntu.copyWith(
-                    fontSize: 30,
-                    wordSpacing: 5,
-                    color: ColorsHelper.defaultPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                  ),
+                ShaderMask(
+                  shaderCallback: (bounds) => const LinearGradient(
+                    colors: [
+                      Color.fromARGB(255, 27, 113, 194),
+                      ColorsHelper.defaultPrimaryColor,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ).createShader(bounds),
+                  child: SelectableText(
+                      style: FontsHelper.fontUbuntu.copyWith(
+                          fontSize: 30,
+                          fontStyle: FontStyle.italic,
+                          wordSpacing: 3,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                      dataController.siteData!.contactSection.callToActionLine),
                 ),
-                // const TextSpan(text: '.'),
+                const DContactPageOptions(),
               ],
             ),
-          ),
-          const DContactPageOptions(),
-        ],
-      ),
-    );
+          )
+        : const SizedBox.shrink();
   }
 }

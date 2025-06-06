@@ -7,6 +7,6 @@ class MqHelper extends GetxController {
   setSize(double w, double h) {
     width = w;
     height = h;
-    update(['canvas']);
+    update(['canvas', 'canvas options']);
   }
 }

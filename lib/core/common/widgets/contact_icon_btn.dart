@@ -7,10 +7,12 @@ class ContactIconBtn extends StatelessWidget {
   final double size;
   final double? iconSize;
   final IconData icon;
+  final Function() onPressed;
   const ContactIconBtn({
     super.key,
     this.iconSize,
     required this.icon,
+    required this.onPressed,
     this.size = 70,
   });
 
@@ -30,7 +32,7 @@ class ContactIconBtn extends StatelessWidget {
                 backgroundColor: WidgetStateProperty.all(
                   Colors.white.withAlpha(20),
                 )),
-            onPressed: () {},
+            onPressed: onPressed,
             icon: Icon(
               icon,
               size: iconSize,

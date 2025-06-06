@@ -2,22 +2,23 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:portfolio_2025/app/projects/presentation/widgets/d_project_detail_popup.dart';
+import 'package:portfolio_2025/core/common/models/featured_work_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
 class DProjectWidget extends StatelessWidget {
-  const DProjectWidget({super.key});
+  final FeaturedProjectModel project;
+  const DProjectWidget({super.key, required this.project});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsetsGeometry.symmetric(vertical: 30),
-      // height: 500,
       width: 350,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          // border: Border.all(
-          //     color: ColorsHelper.defaultPrimaryColor.withAlpha(120))
           border:
               Border.all(color: ColorsHelper.secondaryCanvasColor, width: 2)),
       child: Column(
@@ -30,18 +31,29 @@ class DProjectWidget extends StatelessWidget {
             width: 350,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              // gradient: LinearGradient(
-              //   colors: [
-              //     ColorsHelper.defaultPrimaryColor.withAlpha(30),
-              //     ColorsHelper.defaultPrimaryColor.withAlpha(30)
-              //   ],
-              //   begin: Alignment.topLeft,
-              //   end: Alignment.bottomRight,
-              // )
               color: ColorsHelper.white,
             ),
             child: Stack(
               children: [
+                Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                        width: 350,
+                        height: 200,
+                        child: Image.network(
+                          errorBuilder: (context, error, stackTrace) {
+                            return const Icon(
+                              CupertinoIcons.photo,
+                              size: 50,
+                              color: ColorsHelper.secondaryCanvasColor,
+                            );
+                          },
+                          project.projectImageUrl,
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                ),
                 Positioned(
                     bottom: 10,
                     right: 10,
@@ -56,7 +68,7 @@ class DProjectWidget extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 15, vertical: 7),
                           child: Text(
-                            'Open Source',
+                            project.type,
                             style: FontsHelper.fontUbuntu.copyWith(
                                 fontWeight: FontWeight.w500,
                                 color: ColorsHelper.white),
@@ -75,67 +87,18 @@ class DProjectWidget extends StatelessWidget {
               const SizedBox(
                 width: 5,
               ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: ColorsHelper.secondaryCanvasColor),
-                child: const Row(
-                  spacing: 8,
-                  children: [
-                    Icon(
-                      Icons.android,
-                      color: Colors.green,
-                    ),
-                    // Text(
-                    //   'Android',
-                    //   style: FontsHelper.animatedTextsFont
-                    //       .copyWith(color: Colors.white),
-                    // )
-                  ],
-                ),
-              ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: ColorsHelper.secondaryCanvasColor.withAlpha(200)),
-                child: const Row(
-                  spacing: 8,
-                  children: [
-                    Icon(
-                      Icons.apple,
-                      color: Colors.white,
-                    ),
-                    // Text(
-                    //   'IOS',
-                    //   style: FontsHelper.animatedTextsFont
-                    //       .copyWith(color: Colors.white),
-                    // )
-                  ],
-                ),
-              ),
-              Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: ColorsHelper.secondaryCanvasColor.withAlpha(200)),
-                child: const Row(
-                  spacing: 8,
-                  children: [
-                    Icon(
-                      CupertinoIcons.globe,
-                      color: Colors.blue,
-                    ),
-                    // Text(
-                    //   'Web',
-                    //   style: FontsHelper.animatedTextsFont
-                    //       .copyWith(color: Colors.white),
-                    // )
-                  ],
+              ...List.generate(
+                project.platforms.length,
+                (i) => Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: ColorsHelper.secondaryCanvasColor),
+                  child: Icon(
+                    project.platforms[i].platformIcon,
+                    color: _getPlatformColor(project.platforms[i].platformName),
+                  ),
                 ),
               ),
             ],
@@ -144,7 +107,7 @@ class DProjectWidget extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 13),
-              child: SelectableText('App Name',
+              child: SelectableText(project.projectName,
                   style: FontsHelper.fontUbuntu.copyWith(
                       color: ColorsHelper.white,
                       fontSize: 22,
@@ -154,36 +117,22 @@ class DProjectWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
             child: SelectableText(
-              'This is a pizza app very good and ui friendly made purely on flutter and for backend I donut know which thing i used.',
+              maxLines: 3,
+              // _truncateDescription(project.shortDescription, 15)
+              project.shortDescription,
               style: FontsHelper.poppinsFont
                   .copyWith(color: ColorsHelper.white, fontSize: 16),
             ),
           ),
-          // SizedBox(
-          //   width: 200,
-          //   child: ElevatedButton(
-          //       style: ElevatedButton.styleFrom(
-          //           shape: RoundedRectangleBorder(
-          //               borderRadius: BorderRadius.circular(10)),
-          //           foregroundColor: ColorsHelper.white,
-          //           backgroundColor:
-          //               ColorsHelper.secondaryCanvasColor.withAlpha(200)),
-          //       onPressed: () {},
-          //       child: Text(
-          //         'View info',
-          //         style: FontsHelper.poppinsFont.copyWith(
-          //             fontSize: 14,
-          //             fontWeight: FontWeight.w600,
-          //             color: ColorsHelper.defaultPrimaryColor),
-          //       )),
-          // ),
           SizedBox(
             width: 200,
             child: TextButton(
                 style: TextButton.styleFrom(
                     overlayColor:
                         ColorsHelper.defaultPrimaryColor.withAlpha(50)),
-                onPressed: () {},
+                onPressed: () {
+                  Get.dialog(DProjectDetailPopup(project: project));
+                },
                 child: Text(
                   'View Info',
                   style: FontsHelper.poppinsFont.copyWith(
@@ -197,5 +146,17 @@ class DProjectWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Color _getPlatformColor(String platformName) {
+    final platform = platformName.toLowerCase();
+
+    if (platform.contains('android')) return Colors.green;
+    if (platform.contains('ios')) return ColorsHelper.white;
+    if (platform.contains('web')) return Colors.blue;
+    if (platform.contains('mac')) return Colors.orange;
+    if (platform.contains('windows')) return Colors.lightBlue;
+
+    return ColorsHelper.white;
   }
 }

@@ -1,13 +1,17 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/core/common/widgets/contact_icon_btn.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageContact extends StatelessWidget {
-  const LandingPageContact({super.key});
+  final dataController = Get.find<DataController>();
+  LandingPageContact({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,19 +19,47 @@ class LandingPageContact extends StatelessWidget {
       spacing: 15,
       mainAxisSize: MainAxisSize.min,
       children: [
-        const ContactIconBtn(
+        ContactIconBtn(
+          onPressed: () async {
+            if (await canLaunchUrl(Uri.parse(
+                dataController.siteData?.contactSection.emailLink ?? ''))) {
+              await launchUrl(Uri.parse(
+                  dataController.siteData?.contactSection.emailLink ?? ''));
+            }
+          },
           icon: BoxIcons.bxl_gmail,
           size: 50,
         ),
-        const ContactIconBtn(
+        ContactIconBtn(
           icon: BoxIcons.bxl_github,
+          onPressed: () async {
+            if (await canLaunchUrl(Uri.parse(
+                dataController.siteData?.contactSection.githubLink ?? ''))) {
+              await launchUrl(Uri.parse(
+                  dataController.siteData?.contactSection.githubLink ?? ''));
+            }
+          },
           size: 50,
         ),
-        const ContactIconBtn(
+        ContactIconBtn(
           icon: BoxIcons.bxl_linkedin,
+          onPressed: () async {
+            if (await canLaunchUrl(Uri.parse(
+                dataController.siteData?.contactSection.linkedinLink ?? ''))) {
+              await launchUrl(Uri.parse(
+                  dataController.siteData?.contactSection.linkedinLink ?? ''));
+            }
+          },
           size: 50,
         ),
-        const ContactIconBtn(
+        ContactIconBtn(
+          onPressed: () async {
+            if (await canLaunchUrl(Uri.parse(
+                dataController.siteData?.contactSection.whatsappLink ?? ''))) {
+              await launchUrl(Uri.parse(
+                  dataController.siteData?.contactSection.whatsappLink ?? ''));
+            }
+          },
           icon: BoxIcons.bxl_whatsapp,
           size: 50,
         ),
@@ -44,7 +76,15 @@ class LandingPageContact extends StatelessWidget {
                     backgroundColor: WidgetStateProperty.all(
                       Colors.white.withAlpha(20),
                     )),
-                onPressed: () {},
+                onPressed: () async {
+                  if (await canLaunchUrl(Uri.parse(dataController
+                          .siteData?.contactSection.downloadResumeLink ??
+                      ''))) {
+                    await launchUrl(Uri.parse(dataController
+                            .siteData?.contactSection.downloadResumeLink ??
+                        ''));
+                  }
+                },
                 label: Text(
                   'Download CV',
                   style: GoogleFonts.ubuntu(

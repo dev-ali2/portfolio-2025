@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'dart:ui';
 import 'dart:async';
 import 'dart:isolate';
-import 'package:portfolio_2025/app/landing_page/data/d_topbar_options.dart';
+import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
@@ -131,8 +132,15 @@ class _DTopbarState extends State<DTopbar> with TickerProviderStateMixin {
     super.initState();
 
     // Cache enabled options to avoid repeated filtering
-    _enabledOptions =
-        DTopbarOptions.topbarItems.where((option) => option.isEnabled).toList();
+    // _enabledOptions =
+    //     DTopbarOptions.topbarItems.where((option) => option.isEnabled).toList();
+    _enabledOptions = Get.find<DataController>()
+            .siteData
+            ?.landingPageModel
+            .topBarOptions
+            .where((option) => option.isEnabled)
+            .toList() ??
+        [];
 
     _containerAnimationController = AnimationController(
       duration: const Duration(milliseconds: 600),

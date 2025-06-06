@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_2025/core/common/models/blog_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BlogTileWidget extends StatelessWidget {
-  const BlogTileWidget({super.key});
+  final BlogItem blogItem;
+  const BlogTileWidget({super.key, required this.blogItem});
 
   @override
   Widget build(BuildContext context) {
@@ -12,8 +15,6 @@ class BlogTileWidget extends StatelessWidget {
       width: 350,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          // border: Border.all(
-          //     color: ColorsHelper.defaultPrimaryColor.withAlpha(200))
           border:
               Border.all(color: ColorsHelper.secondaryCanvasColor, width: 2)),
       child: Column(
@@ -25,21 +26,21 @@ class BlogTileWidget extends StatelessWidget {
             height: 200,
             width: 350,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: ColorsHelper.white,
+            ),
+            child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                // gradient: LinearGradient(
-                //   colors: [
-                //     ColorsHelper.defaultPrimaryColor.withAlpha(30),
-                //     ColorsHelper.defaultPrimaryColor.withAlpha(30)
-                //   ],
-                //   begin: Alignment.topLeft,
-                //   end: Alignment.bottomRight,
-                // ),
-                color: ColorsHelper.white),
+                child: Image.network(
+                  blogItem.imageUrl,
+                  fit: BoxFit.cover,
+                )),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
             child: SelectableText(
-              'This is a pizza app very good and ui friendly made purely on flutter and for backend I donut know which thing i used.',
+              maxLines: 3,
+              blogItem.description,
               style: FontsHelper.fontUbuntu
                   .copyWith(color: Colors.white, fontSize: 18),
             ),
@@ -51,7 +52,13 @@ class BlogTileWidget extends StatelessWidget {
                   foregroundColor: ColorsHelper.defaultPrimaryColor,
                 ),
                 icon: const Icon(Icons.arrow_outward_rounded),
-                onPressed: () {},
+                onPressed: () async {
+                  if (await canLaunchUrl(Uri.parse(blogItem.link))) {
+                    await launchUrl(Uri.parse(blogItem.link));
+                  } else {
+                    return;
+                  }
+                },
                 label: Text(
                   'Visit blog',
                   style: FontsHelper.fontUbuntu
