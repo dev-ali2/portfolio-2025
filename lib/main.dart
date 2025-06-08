@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/app/splash_screen/presentation/screens/d_splash_screen.dart';
@@ -32,13 +31,14 @@ class MyApp extends StatelessWidget {
           color: ColorsHelper.defaultCanvasColor,
           theme: ThemeHelper.darkTheme,
           title: 'Flutter Demo',
-          home: AnimatedPrimaryScrollController(
-              animationFactory: const ChromiumImpulse(),
-              // animationFactory: const ChromiumEaseInOut(),
-              child: Builder(builder: (context) => const DSplashScreen())
+          // home: AnimatedPrimaryScrollController(
+          //     animationFactory: const ChromiumImpulse(),
+          //     // animationFactory: const ChromiumEaseInOut(),
+          //     child: Builder(builder: (context) => const DSplashScreen())
 
-              // child: const MainCanvasScreen())),
-              ),
+          //     // child: const MainCanvasScreen())),
+          //     ),
+          home: const DSplashScreen(),
         ));
   }
 }

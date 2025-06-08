@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/app/contact/presentation/widgets/d_contact_page_options.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
@@ -13,6 +14,7 @@ class DContactPage extends StatelessWidget {
     final dataController = Get.find<DataController>();
     return dataController.siteData!.contactSection.isEnabled
         ? Container(
+            key: contactPageKey,
             width: double.maxFinite,
             padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
             child: Column(
@@ -20,7 +22,7 @@ class DContactPage extends StatelessWidget {
               spacing: 60,
               children: [
                 const SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
                 ShaderMask(
                   shaderCallback: (bounds) => const LinearGradient(

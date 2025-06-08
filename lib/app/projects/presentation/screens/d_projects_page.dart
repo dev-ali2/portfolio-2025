@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:portfolio_2025/app/projects/presentation/widgets/d_project_widget.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
@@ -16,6 +17,7 @@ class DProjectsPage extends StatelessWidget {
     final dataController = Get.find<DataController>();
     return dataController.siteData!.featuredWork.isEnabled
         ? Container(
+            key: projectsPageKey,
             width: double.maxFinite,
             padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
             child: Column(
@@ -23,8 +25,7 @@ class DProjectsPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 PagesHeader(
-                    title:
-                        dataController.siteData!.featuredWork.headerTitle),
+                    title: dataController.siteData!.featuredWork.headerTitle),
                 Wrap(
                   spacing: 40,
                   alignment: WrapAlignment.center,

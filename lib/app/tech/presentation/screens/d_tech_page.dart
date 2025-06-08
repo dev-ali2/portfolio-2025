@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/app/tech/presentation/widgets/tech_image_widget.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 
 class DTechPage extends StatelessWidget {
@@ -12,6 +13,7 @@ class DTechPage extends StatelessWidget {
     final dataController = Get.find<DataController>();
     return dataController.siteData!.tech.isEnabled
         ? Container(
+            key: techPageKey,
             width: double.maxFinite,
             padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
             child: Column(
@@ -19,8 +21,7 @@ class DTechPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                PagesHeader(
-                    title: dataController.siteData!.tech.headerTitle),
+                PagesHeader(title: dataController.siteData!.tech.headerTitle),
                 Wrap(
                   alignment: WrapAlignment.center,
                   spacing: 40,

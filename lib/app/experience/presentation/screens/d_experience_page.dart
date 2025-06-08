@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
@@ -13,6 +14,7 @@ class DExperiencePage extends StatelessWidget {
     final dataController = Get.find<DataController>();
     return dataController.siteData!.workExperience.isEnabled
         ? Container(
+            key: workExperiencePageKey,
             width: double.maxFinite,
             padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
             child: Column(
@@ -20,8 +22,7 @@ class DExperiencePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 PagesHeader(
-                    title:
-                        dataController.siteData!.workExperience.headerTitle),
+                    title: dataController.siteData!.workExperience.headerTitle),
                 ...List.generate(
                   dataController
                       .siteData!.workExperience.workExperienceList.length,
@@ -46,7 +47,7 @@ class DExperiencePage extends StatelessWidget {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                '(${dataController.siteData!.workExperience.workExperienceList[i].startTime}---${dataController.siteData!.workExperience.workExperienceList[i].endTime})',
+                                '(${dataController.siteData!.workExperience.workExperienceList[i].startTime} --> ${dataController.siteData!.workExperience.workExperienceList[i].endTime})',
                                 style: FontsHelper.fontUbuntu
                                     .copyWith(color: Colors.grey, fontSize: 12),
                               )),

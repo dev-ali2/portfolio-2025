@@ -13,7 +13,9 @@ import 'package:portfolio_2025/app/landing_page/presentation/screens/d_landing_p
 import 'package:portfolio_2025/app/landing_page/presentation/widgets/d_topbar.dart';
 import 'package:portfolio_2025/app/tech/presentation/screens/d_tech_page.dart';
 import 'package:portfolio_2025/app/projects/presentation/screens/d_projects_page.dart';
+import 'package:portfolio_2025/app/testimonial/presentation/screens/d_testimonial_page.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
@@ -95,9 +97,12 @@ class MainCanvasScreen extends StatefulWidget {
 
 class _MainCanvasScreenState extends State<MainCanvasScreen>
     with TickerProviderStateMixin {
+  final ScrollController _scrollController = ScrollController();
   final dataController = Get.find<DataController>();
   late AnimationController _elasticController;
+  late AnimationController _carouselController;
   late Animation<double> _scaleAnimation;
+  late Animation<Offset> _slideAnimation;
 
   final ValueNotifier<Offset> _currentPositionNotifier =
       ValueNotifier(const Offset(0, 0));
@@ -112,10 +117,15 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
   ReceivePort? _mainReceivePort;
   SendPort? _isolateSendPort;
   bool _isolateReady = false;
+  bool showScrollUpButton = false;
+
+  // Carousel variables
 
   static const double _circleSize = 12.0;
   static const double _offsetX = -8.0;
   static const double _offsetY = -8.0;
+
+  // Sample endorsement data - 11 endorsements
 
   @override
   void initState() {
@@ -126,12 +136,25 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
       vsync: this,
     );
 
+    _carouselController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+
     _scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 1.4,
     ).animate(CurvedAnimation(
       parent: _elasticController,
       curve: Curves.easeOutBack,
+    ));
+
+    _slideAnimation = Tween<Offset>(
+      begin: Offset.zero,
+      end: const Offset(-1.0, 0.0),
+    ).animate(CurvedAnimation(
+      parent: _carouselController,
+      curve: Curves.easeInOut,
     ));
 
     _initializeIsolate();
@@ -157,7 +180,6 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
       });
     } catch (e) {
       log('Failed to initialize isolate: $e');
-      // Fallback to main thread computation
       _startOptimizedAnimationMainThread();
     }
   }
@@ -189,7 +211,6 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
     });
   }
 
-  // Fallback method for main thread computation
   void _startOptimizedAnimationMainThread() {
     const double lerpFactor = 0.2;
     const double nearDistance = 25.0;
@@ -237,6 +258,9 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
     _computationIsolate?.kill();
     _mainReceivePort?.close();
     _elasticController.dispose();
+    _carouselController.dispose();
+    _scrollController.dispose();
+
     _currentPositionNotifier.dispose();
     _isNearTargetNotifier.dispose();
     super.dispose();
@@ -254,6 +278,7 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
           return Scaffold(
             backgroundColor: ColorsHelper.canvasColor,
             body: Stack(
+              alignment: Alignment.center,
               children: [
                 MouseRegion(
                   onHover: (event) {
@@ -261,22 +286,46 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
                       _updateMousePosition(event.position);
                     }
                   },
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: GetBuilder<MqHelper>(
-                      id: 'canvas options',
-                      builder: (controller) => const Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          DLandingPage(),
-                          DAboutPage(),
-                          DTechPage(),
-                          DProjectsPage(),
-                          DExperiencePage(),
-                          DBlogPage(),
-                          DContactPage(),
-                          DFooter(),
-                        ],
+                  child: NotificationListener<ScrollNotification>(
+                    onNotification: (notification) {
+                      log('${notification.metrics.pixels}');
+                      if (notification.metrics.pixels >= MqHelper.height) {
+                        showScrollUpButton = true;
+
+                        Get.find<MqHelper>().update(['button']);
+                      } else {
+                        showScrollUpButton = false;
+                        Get.find<MqHelper>().update(['button']);
+                        log('Hiding button');
+                      }
+                      if (notification is ScrollStartNotification) {
+                        // Pause the animation when scrolling starts
+                        //  _elasticController.stop();
+                      } else if (notification is ScrollEndNotification) {
+                        // Resume the animation when scrolling ends
+                        //  _elasticController.forward();
+                      }
+                      return true;
+                    },
+                    child: SingleChildScrollView(
+                      // controller: _scrollController,
+                      physics: const BouncingScrollPhysics(),
+                      child: GetBuilder<MqHelper>(
+                        id: 'canvas options',
+                        builder: (controller) => Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            DLandingPage(),
+                            const DAboutPage(),
+                            const DTechPage(),
+                            const DExperiencePage(),
+                            const DProjectsPage(),
+                            DTestimonialPage(),
+                            const DBlogPage(),
+                            const DContactPage(),
+                            const DFooter(),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -336,10 +385,59 @@ class _MainCanvasScreenState extends State<MainCanvasScreen>
                       );
                     },
                   ),
-                const Positioned(top: 10, child: DTopbar())
+                const Positioned(top: 10, child: DTopbar()),
+                GetBuilder<MqHelper>(
+                    id: 'button',
+                    builder: (controller) =>
+                        _buildScrollToTopButton(showScrollUpButton)),
               ],
             ),
           );
         });
   }
+}
+
+Widget _buildScrollToTopButton(bool showBtn) {
+  // if (showBtn == false) {
+  //   return SizedBox.shrink();
+  // }
+  return Positioned(
+    bottom: 30,
+    right: 15,
+    child: AnimatedContainer(
+      decoration: BoxDecoration(
+        color: ColorsHelper.secondaryCanvasColor,
+        borderRadius: BorderRadius.circular(50),
+        boxShadow: [
+          BoxShadow(
+            color: ColorsHelper.defaultPrimaryColor.withAlpha(200),
+            blurRadius: 10,
+            spreadRadius: 2,
+          ),
+        ],
+      ),
+      duration: const Duration(milliseconds: 600),
+      width: showBtn ? 50 : 0,
+      height: showBtn ? 50 : 0,
+      curve: Curves.easeInOut,
+      child: AnimatedOpacity(
+        duration: const Duration(milliseconds: 600),
+        opacity: showBtn ? 1.0 : 0.0,
+        curve: Curves.easeInOut,
+        child: IconButton(
+            style: IconButton.styleFrom(
+              backgroundColor: ColorsHelper.secondaryCanvasColor,
+              foregroundColor: ColorsHelper.defaultPrimaryColor,
+              overlayColor: ColorsHelper.defaultPrimaryColor.withAlpha(100),
+            ),
+            onPressed: () {
+              Scrollable.ensureVisible(landingPageKey.currentContext!,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeInOut);
+            },
+            icon: const Icon(Icons.arrow_upward_rounded,
+                color: ColorsHelper.defaultPrimaryColor, size: 30)),
+      ),
+    ),
+  );
 }

@@ -58,7 +58,7 @@ class DProjectDetailPopup extends StatelessWidget {
                               style: FontsHelper.poppinsFont.copyWith(
                                 color: ColorsHelper.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 27,
+                                fontSize: 30,
                               ),
                             ),
                           ),
@@ -80,7 +80,7 @@ class DProjectDetailPopup extends StatelessWidget {
                         style: FontsHelper.poppinsFont.copyWith(
                           color: ColorsHelper.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                          fontSize: 22,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -88,18 +88,18 @@ class DProjectDetailPopup extends StatelessWidget {
                         project.longDescription,
                         style: FontsHelper.fontUbuntu.copyWith(
                           color: ColorsHelper.white,
-                          fontSize: 16,
+                          fontSize: 15,
                         ),
                       ),
                       const SizedBox(height: 24),
 
                       // Tech Used Section
                       Text(
-                        'Technologies Used',
+                        'Tech Used',
                         style: FontsHelper.poppinsFont.copyWith(
                           color: ColorsHelper.white,
                           fontWeight: FontWeight.w600,
-                          fontSize: 24,
+                          fontSize: 22,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -139,7 +139,7 @@ class DProjectDetailPopup extends StatelessWidget {
                         style: FontsHelper.poppinsFont.copyWith(
                           color: ColorsHelper.white,
                           fontWeight: FontWeight.w600,
-                          fontSize: 20,
+                          fontSize: 22,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -147,27 +147,25 @@ class DProjectDetailPopup extends StatelessWidget {
                         runSpacing: 30,
                         spacing: 30,
                         children: [
-                          ...project.platforms
-                              .map((platform) => Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Icon(
-                                        platform.platformIcon,
-                                        color: _getPlatformColor(
-                                            platform.platformName),
-                                        size: 20,
-                                      ),
-                                      const SizedBox(width: 12),
-                                      Text(
-                                        platform.platformName,
-                                        style: FontsHelper.poppinsFont.copyWith(
-                                          color: ColorsHelper.white,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    ],
-                                  ))
-                              ,
+                          ...project.platforms.map((platform) => Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    platform.platformIcon,
+                                    color: _getPlatformColor(
+                                        platform.platformName),
+                                    size: 20,
+                                  ),
+                                  const SizedBox(width: 12),
+                                  Text(
+                                    platform.platformName,
+                                    style: FontsHelper.poppinsFont.copyWith(
+                                      color: ColorsHelper.white,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              )),
                         ],
                       ),
                       const SizedBox(height: 24),
@@ -178,7 +176,7 @@ class DProjectDetailPopup extends StatelessWidget {
                         style: FontsHelper.poppinsFont.copyWith(
                           color: ColorsHelper.white,
                           fontWeight: FontWeight.w600,
-                          fontSize: 20,
+                          fontSize: 22,
                         ),
                       ),
                       const SizedBox(height: 15),
@@ -186,43 +184,39 @@ class DProjectDetailPopup extends StatelessWidget {
                         runSpacing: 30,
                         spacing: 10,
                         children: [
-                          ...project.availableOn!
-                              .map((availableOn) => Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      TextButton.icon(
-                                          style: TextButton.styleFrom(
-                                            overlayColor: ColorsHelper
-                                                .defaultPrimaryColor
-                                                .withAlpha(100),
-                                          ),
-                                          onPressed: () async {
-                                            if (await canLaunchUrl(Uri.parse(
-                                                availableOn.link ?? ''))) {
-                                              await launchUrl(
-                                                  Uri.parse(availableOn.link!));
-                                            } else {
-                                              return;
-                                            }
-                                          },
-                                          icon: const Icon(
-                                            Icons.arrow_outward_rounded,
-                                            color: ColorsHelper
-                                                .defaultPrimaryColor,
-                                            size: 18,
-                                          ),
-                                          label: Text(
-                                            availableOn.name,
-                                            style:
-                                                FontsHelper.fontUbuntu.copyWith(
-                                              wordSpacing: 3,
-                                              fontSize: 16,
-                                              color: ColorsHelper.white,
-                                            ),
-                                          )),
-                                    ],
-                                  ))
-                              ,
+                          ...project.availableOn!.map((availableOn) => Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  TextButton.icon(
+                                      style: TextButton.styleFrom(
+                                        overlayColor: ColorsHelper
+                                            .defaultPrimaryColor
+                                            .withAlpha(100),
+                                      ),
+                                      onPressed: () async {
+                                        if (await canLaunchUrl(Uri.parse(
+                                            availableOn.link ?? ''))) {
+                                          await launchUrl(
+                                              Uri.parse(availableOn.link!));
+                                        } else {
+                                          return;
+                                        }
+                                      },
+                                      icon: const Icon(
+                                        Icons.arrow_outward_rounded,
+                                        color: ColorsHelper.defaultPrimaryColor,
+                                        size: 18,
+                                      ),
+                                      label: Text(
+                                        availableOn.name,
+                                        style: FontsHelper.fontUbuntu.copyWith(
+                                          wordSpacing: 3,
+                                          fontSize: 16,
+                                          color: ColorsHelper.white,
+                                        ),
+                                      )),
+                                ],
+                              )),
                         ],
                       ),
                     ],

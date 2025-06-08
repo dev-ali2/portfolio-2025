@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'dart:async';
 import 'dart:isolate';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
@@ -371,7 +372,9 @@ class _DTopbarState extends State<DTopbar> with TickerProviderStateMixin {
         _OptimizedAnimatedTextButton(
           key: ValueKey('${_enabledOptions[i].title}_$i'),
           text: _enabledOptions[i].title,
-          onPressed: () {},
+          onPressed: () {
+            scrollToWidget(_enabledOptions[i].title);
+          },
           onHoverChanged: _setHoveredItem,
           isGreyedOut: shouldBeGreyedOut,
           isVisible: isItemVisible,
@@ -598,5 +601,38 @@ class _OptimizedAnimatedTextButtonState
     } else {
       return _baseTextStyle;
     }
+  }
+}
+
+void scrollToWidget(
+  String title,
+) {
+  BuildContext? context;
+
+  final lowercaseTitle = title.toString().toLowerCase();
+
+  if (lowercaseTitle.contains('about')) {
+    context = aboutPageKey.currentContext;
+  } else if (lowercaseTitle.contains('tech')) {
+    context = techPageKey.currentContext;
+  } else if (lowercaseTitle.contains('projects')) {
+    context = projectsPageKey.currentContext;
+  } else if (lowercaseTitle.contains('experience')) {
+    context = workExperiencePageKey.currentContext;
+  } else if (lowercaseTitle.contains('blog')) {
+    context = blogPageKey.currentContext;
+  } else if (lowercaseTitle.contains('testimonials')) {
+    context = testimonialsPageKey.currentContext;
+  } else if (lowercaseTitle.contains('contact')) {
+    context = contactPageKey.currentContext;
+  } else {
+    context = landingPageKey.currentContext;
+  }
+  if (context != null) {
+    Scrollable.ensureVisible(
+      context,
+      duration: const Duration(milliseconds: 1200),
+      curve: Curves.easeInOut,
+    );
   }
 }

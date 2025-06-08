@@ -4,6 +4,7 @@ import 'package:portfolio_2025/core/common/models/contact_section_model.dart';
 import 'package:portfolio_2025/core/common/models/featured_work_model.dart';
 import 'package:portfolio_2025/core/common/models/landing_page_model.dart';
 import 'package:portfolio_2025/core/common/models/tech_stack_model.dart';
+import 'package:portfolio_2025/core/common/models/testimonial_model.dart';
 import 'package:portfolio_2025/core/common/models/work_experience_model.dart';
 
 class DataModel {
@@ -18,6 +19,7 @@ class DataModel {
   WorkExperienceModel workExperience;
   BlogModel blog;
   ContactSectionModel contactSection;
+  TestimonialModel testimonial;
 
   DataModel({
     required this.isSiteEnabled,
@@ -29,6 +31,7 @@ class DataModel {
     required this.workExperience,
     required this.blog,
     required this.contactSection,
+    required this.testimonial,
   });
 
   factory DataModel.fromJson(Map<String, dynamic> json) {
@@ -42,6 +45,7 @@ class DataModel {
       workExperience: WorkExperienceModel.fromJson(json['workExperience']),
       blog: BlogModel.fromJson(json['blog']),
       contactSection: ContactSectionModel.fromJson(json['contactSection']),
+      testimonial: TestimonialModel.fromJson(json['testimonial']),
     );
   }
 
@@ -56,6 +60,7 @@ class DataModel {
       'workExperience': workExperience.toJson(),
       'blog': blog.toJson(),
       'contactSection': contactSection.toJson(),
+      'testimonial': testimonial.toJson(),
     };
   }
 }

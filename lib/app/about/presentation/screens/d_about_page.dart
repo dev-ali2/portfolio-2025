@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
@@ -16,6 +17,7 @@ class DAboutPage extends StatelessWidget {
         ? GetBuilder<MqHelper>(
             id: 'canvas options',
             builder: (controller) => Container(
+              key: aboutPageKey,
               width: MqHelper.width,
               padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
               child: Column(
