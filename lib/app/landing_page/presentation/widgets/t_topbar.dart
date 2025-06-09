@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portfolio_2025/app/landing_page/presentation/controllers/d_topbar_controller.dart';
+import 'package:portfolio_2025/app/landing_page/presentation/controllers/t_top_bar_controller.dart';
 import 'dart:ui';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
-class DTopbar extends StatelessWidget {
-  const DTopbar({super.key});
+class TTopbar extends StatelessWidget {
+  const TTopbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<DTopBarController>(
-      init: DTopBarController(),
+    return GetBuilder<TTopBarController>(
+      init: TTopBarController(),
       builder: (controller) {
         return SizedBox(
           width: MqHelper.width,
-          height: 90,
+          height: 80,
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: EdgeInsets.symmetric(
+                horizontal: MqHelper.width * 0.01, vertical: 10),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -85,7 +86,7 @@ class DTopbar extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildNavigationItems(DTopBarController controller) {
+  List<Widget> _buildNavigationItems(TTopBarController controller) {
     List<Widget> items = [];
 
     for (int i = 0; i < controller.enabledOptions.length; i++) {
@@ -104,36 +105,9 @@ class DTopbar extends StatelessWidget {
           animationDelay: i * 150,
         ),
       );
-
-      if (i < controller.enabledOptions.length - 1) {
-        items.add(_buildOptimizedSeparator(controller, shouldBeGreyedOut, i));
-      }
     }
 
     return items;
-  }
-
-  Widget _buildOptimizedSeparator(
-      DTopBarController controller, bool isGreyedOut, int index) {
-    final isVisible = controller.isItemVisible(index + 1);
-
-    return AnimatedOpacity(
-      duration: const Duration(milliseconds: 300),
-      opacity: isVisible ? 1.0 : 0.0,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        child: Container(
-          width: 4,
-          height: 4,
-          decoration: BoxDecoration(
-            color: isGreyedOut
-                ? Colors.grey.withOpacity(0.3)
-                : Colors.grey.withOpacity(0.6),
-            shape: BoxShape.circle,
-          ),
-        ),
-      ),
-    );
   }
 }
 
@@ -179,9 +153,10 @@ class _OptimizedAnimatedTextButtonState
     super.initState();
 
     // Cache text styles to avoid repeated style creation
-    _baseTextStyle = FontsHelper.fontUbuntu.copyWith(
-      fontSize: 16,
-      fontWeight: FontWeight.normal,
+    _baseTextStyle = FontsHelper.poppinsFont.copyWith(
+      fontSize: 14,
+      letterSpacing: 1,
+      fontWeight: FontWeight.bold,
       color: Colors.white.withAlpha(200),
     );
 
@@ -274,34 +249,37 @@ class _OptimizedAnimatedTextButtonState
                   builder: (context, child) {
                     return Transform.scale(
                       scale: _isHovered ? _scaleAnimation.value : 1.0,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        decoration: BoxDecoration(
-                          color: _isHovered
-                              ? ColorsHelper.defaultPrimaryColor
-                                  .withOpacity(0.2)
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(20),
-                          border: _isHovered
-                              ? Border.all(
-                                  color: ColorsHelper.defaultPrimaryColor
-                                      .withOpacity(0.3),
-                                  width: 1,
-                                )
-                              : null,
-                        ),
-                        child: TextButton(
-                          style: TextButton.styleFrom(
-                            overlayColor: Colors.transparent,
-                            padding: EdgeInsets.zero,
-                            minimumSize: Size.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      child: GetBuilder<MqHelper>(
+                        id: 'canvas options',
+                        builder: (controller) => Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: MqHelper.width * 0.015, vertical: 6),
+                          decoration: BoxDecoration(
+                            color: _isHovered
+                                ? ColorsHelper.defaultPrimaryColor
+                                    .withOpacity(0.2)
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(20),
+                            border: _isHovered
+                                ? Border.all(
+                                    color: ColorsHelper.defaultPrimaryColor
+                                        .withOpacity(0.3),
+                                    width: 1,
+                                  )
+                                : null,
                           ),
-                          onPressed: widget.onPressed,
-                          child: Text(
-                            widget.text,
-                            style: _getOptimizedTextStyle(),
+                          child: TextButton(
+                            style: TextButton.styleFrom(
+                              overlayColor: Colors.transparent,
+                              padding: EdgeInsets.zero,
+                              minimumSize: Size.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            onPressed: widget.onPressed,
+                            child: Text(
+                              widget.text,
+                              style: _getOptimizedTextStyle(),
+                            ),
                           ),
                         ),
                       ),

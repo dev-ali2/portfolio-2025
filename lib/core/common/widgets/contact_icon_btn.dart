@@ -22,6 +22,7 @@ class ContactIconBtn extends StatelessWidget {
       height: size,
       width: size,
       child: ClipRRect(
+        borderRadius: BorderRadius.circular(100),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: IconButton(

@@ -9,8 +9,8 @@ import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
-class DTestimonialPage extends StatelessWidget {
-  DTestimonialPage({super.key});
+class TTestimonialPage extends StatelessWidget {
+  TTestimonialPage({super.key});
 
   final dataController = Get.find<DataController>();
   final testimonialController = Get.put(TestimonialController());
@@ -40,7 +40,7 @@ class DTestimonialPage extends StatelessWidget {
           width: MqHelper.width,
           padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
           child: Column(
-            spacing: 60,
+            spacing: 40,
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -163,6 +163,7 @@ class DTestimonialPage extends StatelessWidget {
         color: ColorsHelper.secondaryCanvasColor,
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         spacing: 5,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

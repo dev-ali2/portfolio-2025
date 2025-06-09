@@ -9,14 +9,14 @@ import 'package:portfolio_2025/core/common/widgets/contact_icon_btn.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class LandingPageContact extends StatelessWidget {
+class MLandingContact extends StatelessWidget {
   final dataController = Get.find<DataController>();
-  LandingPageContact({super.key});
+  MLandingContact({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      spacing: 15,
+      spacing: 12,
       mainAxisSize: MainAxisSize.min,
       children: [
         ContactIconBtn(
@@ -28,7 +28,8 @@ class LandingPageContact extends StatelessWidget {
             }
           },
           icon: BoxIcons.bxl_gmail,
-          size: 50,
+          size: 35,
+          iconSize: 19,
         ),
         ContactIconBtn(
           icon: BoxIcons.bxl_github,
@@ -39,7 +40,8 @@ class LandingPageContact extends StatelessWidget {
                   dataController.siteData?.contactSection.githubLink ?? ''));
             }
           },
-          size: 50,
+          size: 35,
+          iconSize: 19,
         ),
         ContactIconBtn(
           icon: BoxIcons.bxl_linkedin,
@@ -50,7 +52,8 @@ class LandingPageContact extends StatelessWidget {
                   dataController.siteData?.contactSection.linkedinLink ?? ''));
             }
           },
-          size: 50,
+          size: 35,
+          iconSize: 19,
         ),
         ContactIconBtn(
           onPressed: () async {
@@ -61,10 +64,11 @@ class LandingPageContact extends StatelessWidget {
             }
           },
           icon: BoxIcons.bxl_whatsapp,
-          size: 50,
+          size: 35,
+          iconSize: 19,
         ),
         SizedBox(
-          height: 50,
+          height: 35,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(100),
             child: BackdropFilter(
@@ -87,14 +91,15 @@ class LandingPageContact extends StatelessWidget {
                   }
                 },
                 label: Text(
-                  'Download CV',
+                  'CV',
                   style: GoogleFonts.ubuntu(
                       fontWeight: FontWeight.w400,
-                      fontSize: 13,
+                      fontSize: 11,
                       color: const Color.fromRGBO(191, 200, 202, 1)),
                 ),
                 icon: const Icon(
                   Icons.download,
+                  size: 15,
                   color: Color.fromRGBO(191, 200, 202, 1),
                 ),
               ),

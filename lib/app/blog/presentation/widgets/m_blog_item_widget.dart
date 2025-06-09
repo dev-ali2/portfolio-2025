@@ -4,9 +4,9 @@ import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class BlogTileWidget extends StatelessWidget {
+class MBlogItemWidget extends StatelessWidget {
   final BlogItem blogItem;
-  const BlogTileWidget({super.key, required this.blogItem});
+  const MBlogItemWidget({super.key, required this.blogItem});
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +65,6 @@ class BlogTileWidget extends StatelessWidget {
                       .copyWith(fontSize: 15, fontWeight: FontWeight.bold),
                 )),
           ),
-          const SizedBox(
-            height: 0,
-          )
         ],
       ),
     );

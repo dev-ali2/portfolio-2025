@@ -31,13 +31,8 @@ class MyApp extends StatelessWidget {
           color: ColorsHelper.defaultCanvasColor,
           theme: ThemeHelper.darkTheme,
           title: 'Flutter Demo',
-          // home: AnimatedPrimaryScrollController(
-          //     animationFactory: const ChromiumImpulse(),
-          //     // animationFactory: const ChromiumEaseInOut(),
-          //     child: Builder(builder: (context) => const DSplashScreen())
-
-          //     // child: const MainCanvasScreen())),
-          //     ),
+          // animationFactory: const ChromiumImpulse(),
+          // animationFactory: const ChromiumEaseInOut(),
           home: const DSplashScreen(),
         ));
   }

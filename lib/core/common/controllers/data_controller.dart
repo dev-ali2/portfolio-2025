@@ -48,7 +48,7 @@ class DataController extends GetxController {
       }
 
       Get.offAll(
-          duration: const Duration(seconds: 1),
+          duration: const Duration(milliseconds: 800),
           transition: Transition.downToUp,
           routeName: '/',
           () => AnimatedPrimaryScrollController(

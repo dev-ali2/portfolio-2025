@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 
 class MqHelper extends GetxController {
@@ -8,5 +10,6 @@ class MqHelper extends GetxController {
     width = w;
     height = h;
     update(['canvas', 'canvas options']);
+    log('Width: $width, Height: $height');
   }
 }

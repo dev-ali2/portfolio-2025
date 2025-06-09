@@ -21,7 +21,17 @@ class SplashScreenController extends GetxController {
     'Здравствуйте',
     'שלום',
     'Γεια σας',
-    'Merhaba'
+    'Merhaba',
+    '안녕하세요',
+    'Jambo',
+    'Sawubona',
+    'Xin chào',
+    'สวัสดี',
+    'Kamusta',
+    'Selamat',
+    'Salam',
+    'Habari',
+    'Aloha'
   ];
 
   int _currentIndex = 0;
@@ -29,13 +39,15 @@ class SplashScreenController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+    // await Future.delayed(const Duration(milliseconds: 500));
     _startGreetingLoop();
     await Get.find<AppwriteController>().initAppwrite();
+    // await Future.delayed(Duration(seconds: 2));
     Get.find<AppwriteController>().getSiteData();
   }
 
   void _startGreetingLoop() {
-    Timer.periodic(const Duration(milliseconds: 100), (timer) {
+    Timer.periodic(const Duration(milliseconds: 150), (timer) {
       currentGreeting = greetings[_currentIndex];
       update();
       _currentIndex = (_currentIndex + 1) % greetings.length;

@@ -5,14 +5,14 @@ import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/core/common/widgets/contact_icon_btn.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DContactPageOptions extends StatelessWidget {
-  const DContactPageOptions({super.key});
+class MContactPageOptions extends StatelessWidget {
+  const MContactPageOptions({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dataController = Get.find<DataController>();
     return Row(
-      spacing: 20,
+      spacing: 12,
       mainAxisSize: MainAxisSize.min,
       children: [
         ContactIconBtn(
@@ -24,7 +24,8 @@ class DContactPageOptions extends StatelessWidget {
             }
           },
           icon: BoxIcons.bxl_gmail,
-          iconSize: 40,
+          iconSize: 25,
+          size: 50,
         ),
         ContactIconBtn(
           onPressed: () async {
@@ -35,7 +36,8 @@ class DContactPageOptions extends StatelessWidget {
             }
           },
           icon: BoxIcons.bxl_github,
-          iconSize: 40,
+          iconSize: 25,
+          size: 50,
         ),
         ContactIconBtn(
           onPressed: () async {
@@ -46,7 +48,8 @@ class DContactPageOptions extends StatelessWidget {
             }
           },
           icon: BoxIcons.bxl_linkedin,
-          iconSize: 40,
+          iconSize: 25,
+          size: 50,
         ),
         ContactIconBtn(
           onPressed: () async {
@@ -57,7 +60,8 @@ class DContactPageOptions extends StatelessWidget {
             }
           },
           icon: BoxIcons.bxl_whatsapp,
-          iconSize: 40,
+          iconSize: 25,
+          size: 50,
         ),
       ],
     );

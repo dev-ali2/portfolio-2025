@@ -37,11 +37,13 @@ class AppwriteController extends GetxController {
           databaseId: dotenv.env['Database_id'] ?? '',
           collectionId: dotenv.env['Collection_id'] ?? '',
           documentId: dotenv.env['Document_id'] ?? '');
-      await Future.delayed(const Duration(seconds: 3));
+
       Get.find<DataController>().updateSiteData(response.data);
+
+      // final Map<String, dynamic> mockData = {'data': dataAsString};
+      // Get.find<DataController>().updateSiteData(mockData);
     } catch (e) {
       log('Error fetching site data: $e');
     }
   }
-
 }

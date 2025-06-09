@@ -4,13 +4,13 @@ import 'package:portfolio_2025/app/testimonial/presentation/controllers/testimon
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/core/common/models/testimonial_model.dart';
-import 'package:portfolio_2025/core/common/widgets/pages_header.dart';
+import 'package:portfolio_2025/core/common/widgets/m_pages_header.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
-class DTestimonialPage extends StatelessWidget {
-  DTestimonialPage({super.key});
+class MTestimonialPage extends StatelessWidget {
+  MTestimonialPage({super.key});
 
   final dataController = Get.find<DataController>();
   final testimonialController = Get.put(TestimonialController());
@@ -40,14 +40,15 @@ class DTestimonialPage extends StatelessWidget {
           width: MqHelper.width,
           padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
           child: Column(
-            spacing: 60,
+            spacing: 30,
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const PagesHeader(title: 'Endorsements'),
+              const MPagesHeader(title: 'Endorsements'),
 
-              SizedBox(
-                height: 280,
+              Container(
+                constraints: const BoxConstraints(maxHeight: 340),
+                // height: 290,
                 child: Row(
                   children: [
                     // Left Arrow
@@ -66,7 +67,7 @@ class DTestimonialPage extends StatelessWidget {
                                     0
                                 ? ColorsHelper.defaultPrimaryColor
                                 : Colors.grey,
-                            size: 30,
+                            size: 20,
                           ),
                         )),
 
@@ -115,7 +116,7 @@ class DTestimonialPage extends StatelessWidget {
                                     maxPages - 1
                                 ? ColorsHelper.defaultPrimaryColor
                                 : Colors.grey,
-                            size: 30,
+                            size: 20,
                           ),
                         )),
                   ],
@@ -151,7 +152,7 @@ class DTestimonialPage extends StatelessWidget {
 
   Widget _buildEndorsementCard(TestimonialData testimonial) {
     return Container(
-      width: 350,
+      width: MqHelper.width - 177,
       margin: const EdgeInsets.symmetric(horizontal: 10),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
@@ -165,6 +166,7 @@ class DTestimonialPage extends StatelessWidget {
       child: Column(
         spacing: 5,
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (testimonial.imageUrl != null)
             CircleAvatar(
@@ -177,13 +179,14 @@ class DTestimonialPage extends StatelessWidget {
             ),
           const SizedBox(height: 5),
           SelectableText(
+            textAlign: TextAlign.center,
             testimonial.name,
             style: FontsHelper.poppinsFont.copyWith(
               color: ColorsHelper.white,
               fontWeight: FontWeight.bold,
-              fontSize: 22,
-              height: 0.7,
-              wordSpacing: 1.2,
+              fontSize: 20,
+              height: 0.95,
+              wordSpacing: 1.1,
             ),
           ),
           if (testimonial.position != null)
@@ -191,17 +194,18 @@ class DTestimonialPage extends StatelessWidget {
               testimonial.position ?? '',
               style: FontsHelper.fontUbuntu.copyWith(
                 color: Colors.grey,
-                fontSize: 12,
+                fontSize: 10,
               ),
             ),
           const SizedBox(height: 5),
           SelectableText(
             '"${testimonial.testimonial}"',
-            minLines: 4,
-            maxLines: 4,
+            minLines: 3,
+            maxLines: 6,
             style: FontsHelper.fontUbuntu.copyWith(
+              overflow: TextOverflow.clip,
               color: ColorsHelper.white,
-              fontSize: 15,
+              fontSize: 13.5,
               fontStyle: FontStyle.italic,
             ),
           ),

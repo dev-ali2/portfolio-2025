@@ -5,19 +5,19 @@ import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class TechImageWidget extends StatefulWidget {
+class TTechImageWidget extends StatefulWidget {
   final String image;
   final String title;
-  const TechImageWidget({super.key, required this.image, required this.title});
+  const TTechImageWidget({super.key, required this.image, required this.title});
 
   @override
-  State<TechImageWidget> createState() => _TechImageWidgetState();
+  State<TTechImageWidget> createState() => _TTechImageWidgetState();
 }
 
-class _TechImageWidgetState extends State<TechImageWidget> {
+class _TTechImageWidgetState extends State<TTechImageWidget> {
   final dataController = Get.find<DataController>();
   bool isHovering = false;
-  double _maxWidth = 90;
+  double _maxWidth = 70;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
     textPainter.layout();
 
     setState(() {
-      _maxWidth = 90 + 10 + textPainter.width + 8;
+      _maxWidth = 70 + 10 + textPainter.width + 8;
     });
   }
 
@@ -65,7 +65,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           padding: const EdgeInsets.all(4),
-          height: 70,
+          height: 60,
           width: _maxWidth,
           decoration: BoxDecoration(
               color: ColorsHelper.secondaryCanvasColor,
@@ -76,7 +76,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
                   : null),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            spacing: 10,
+            spacing: 8,
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 7),
@@ -90,7 +90,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
                 style: FontsHelper.fontUbuntu.copyWith(
                     color: ColorsHelper.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16),
+                    fontSize: 14),
               ),
             ],
           ),
