@@ -39,15 +39,15 @@ class SplashScreenController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    // await Future.delayed(const Duration(milliseconds: 500));
+
     _startGreetingLoop();
     await Get.find<AppwriteController>().initAppwrite();
-    // await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     Get.find<AppwriteController>().getSiteData();
   }
 
   void _startGreetingLoop() {
-    Timer.periodic(const Duration(milliseconds: 150), (timer) {
+    Timer.periodic(const Duration(milliseconds: 80), (timer) {
       currentGreeting = greetings[_currentIndex];
       update();
       _currentIndex = (_currentIndex + 1) % greetings.length;

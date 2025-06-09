@@ -3,8 +3,8 @@ import 'package:portfolio_2025/app/main_canvas/presentation/controllers/main_can
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 
 class ScrollToUpBtn extends StatelessWidget {
-  MainCanvasController controller;
-  ScrollToUpBtn({super.key, required this.controller});
+  final MainCanvasController controller;
+  const ScrollToUpBtn({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {

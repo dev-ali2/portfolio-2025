@@ -48,8 +48,8 @@ class DataController extends GetxController {
       }
 
       Get.offAll(
-          duration: const Duration(milliseconds: 800),
-          transition: Transition.downToUp,
+          duration: const Duration(milliseconds: 1500),
+          transition: Transition.fadeIn,
           routeName: '/',
           () => AnimatedPrimaryScrollController(
               animationFactory: const ChromiumImpulse(),

@@ -29,10 +29,157 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>portfolio_2025</title>
+  <title>Ali Raza</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a1a;
+      font-family: 'Roboto', sans-serif;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100vw;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      background-color: #1a1a1a;
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .flutter-logo {
+      width: 80px;
+      height: 80px;
+      margin-right: 16px;
+    }
+
+    .powered-text {
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .powered-by {
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    .flutter-text {
+      font-size: 34px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .progress-container {
+      width: 240px;
+      height: 4px;
+      background-color: #333333;
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+      margin-left: 15px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #02569B, #0175C2, #0D96F2);
+      border-radius: 2px;
+      animation: loading 2s ease-in-out infinite;
+      width: 0;
+    }
+
+    @keyframes loading {
+      0% {
+        width: 0;
+        transform: translateX(-100%);
+      }
+      50% {
+        width: 100%;
+        transform: translateX(0);
+      }
+      100% {
+        width: 100%;
+        transform: translateX(100%);
+      }
+    }
+
+    /* Hide loading screen after Flutter loads */
+    .flutter-loaded .loading-container {
+      opacity: 0;
+      transition: opacity 0.5s ease-out;
+      pointer-events: none;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .logo-section {
+        margin-bottom: 40px;
+      }
+      
+      .flutter-logo {
+        width: 60px;
+        height: 60px;
+        margin-right: 20px;
+      }
+      
+      .powered-by {
+        font-size: 12px;
+      }
+      
+      .flutter-text {
+        font-size: 24px;
+      }
+      
+      .progress-container {
+        width: 200px;
+      }
+    }
+  </style>
 </head>
-<body bg-color="Black">
+<body>
+  <!-- Loading Screen -->
+  <div class="loading-container" id="loading-screen">
+    <div class="logo-section">
+      <img src="flutter.png" alt="Flutter Logo" class="flutter-logo">
+      <div class="powered-text">
+        <div class="powered-by">Powered by</div>
+        <div class="flutter-text">Flutter</div>
+      </div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-bar"></div>
+    </div>
+  </div>
+
   <script src="flutter_bootstrap.js" async></script>
+  
+  <script>
+    // Hide loading screen when Flutter is ready
+    window.addEventListener('flutter-first-frame', function() {
+      document.body.classList.add('flutter-loaded');
+      setTimeout(function() {
+        document.getElementById('loading-screen').style.display = 'none';
+      }, 500);
+    });
+
+ 
+  </script>
 </body>
 </html>
