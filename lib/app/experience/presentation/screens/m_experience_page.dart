@@ -54,10 +54,14 @@ class MExperiencePage extends StatelessWidget {
                           ...List.generate(
                             dataController.siteData!.workExperience
                                 .workExperienceList[i].responsibilities.length,
-                            (index) => SelectableText(
-                                '${dataController.siteData!.workExperience.workExperienceList[i].responsibilities[index]}\n',
-                                style: FontsHelper.fontUbuntu.copyWith(
-                                    color: ColorsHelper.white, fontSize: 13)),
+                            (index) => Align(
+                              alignment: Alignment.centerLeft,
+                              child: SelectableText(
+                                  textAlign: TextAlign.start,
+                                  '${dataController.siteData!.workExperience.workExperienceList[i].responsibilities[index]}\n',
+                                  style: FontsHelper.fontUbuntu.copyWith(
+                                      color: ColorsHelper.white, fontSize: 13)),
+                            ),
                           )
                         ],
                       ),
@@ -69,6 +73,9 @@ class MExperiencePage extends StatelessWidget {
                           child: Image.network(
                             '${dataController.siteData!.workExperience.workExperienceList[i].companyLogoImageUrl}',
                             fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return const SizedBox.shrink();
+                            },
                           ),
                         ),
                       ),

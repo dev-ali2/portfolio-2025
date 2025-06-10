@@ -56,9 +56,14 @@ class MAboutPage extends StatelessWidget {
                                 '${dataController.siteData!.about.edudationList?[i].UniversityName} ${dataController.siteData!.about.edudationList?[i].startAndEndDate}',
                                 style: FontsHelper.fontUbuntu.copyWith(
                                     color: Colors.grey, fontSize: 12)),
-                            leading: Image.network(dataController.siteData!
-                                    .about.edudationList?[i].logoImageUrl ??
-                                ''),
+                            leading: Image.network(
+                              dataController.siteData!.about.edudationList?[i]
+                                      .logoImageUrl ??
+                                  '',
+                              errorBuilder: (context, error, stackTrace) {
+                                return SizedBox.shrink();
+                              },
+                            ),
                             title: SelectableText(
                                 '${dataController.siteData!.about.edudationList?[i].degreeTitle}',
                                 style: FontsHelper.fontUbuntu.copyWith(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:ui';
 import 'dart:async';
 import 'dart:isolate';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 
-// Isolate message classes for topbar animations
 class TopbarAnimationMessage {
   final String type;
   final Map<String, dynamic> data;
@@ -25,7 +25,6 @@ class TopbarIsolateSetup {
   TopbarIsolateSetup(this.sendPort);
 }
 
-// Isolate for handling topbar animation calculations
 void topbarAnimationIsolate(SendPort mainSendPort) {
   final receivePort = ReceivePort();
   mainSendPort.send(TopbarIsolateSetup(receivePort.sendPort));
@@ -82,7 +81,6 @@ void _calculateAnimationValues(Map<String, dynamic> data, SendPort sendPort) {
       result: {'animationType': animationType, 'value': calculatedValue}));
 }
 
-// Easing functions
 double _easeOutBack(double t) {
   const c1 = 1.70158;
   const c3 = c1 + 1;
@@ -95,20 +93,17 @@ double _easeOutCubic(double t) {
 
 class DTopBarController extends GetxController
     with GetTickerProviderStateMixin {
-  // Core state variables
   String? _hoveredItem;
   String? get hoveredItem => _hoveredItem;
 
   List<bool> _greyedOutStates = [];
   List<bool> get greyedOutStates => _greyedOutStates;
 
-  // Animation controllers
   late AnimationController containerAnimationController;
   late AnimationController itemsAnimationController;
   late Animation<double> containerSizeAnimation;
   late Animation<double> containerOpacityAnimation;
 
-  // Animation states
   bool _showContainer = false;
   bool get showContainer => _showContainer;
 
@@ -120,14 +115,12 @@ class DTopBarController extends GetxController
 
   Timer? _itemAnimationTimer;
 
-  // Isolate related variables
   Isolate? _animationIsolate;
   ReceivePort? _mainReceivePort;
   SendPort? _isolateSendPort;
   bool _isolateReady = false;
   bool get isolateReady => _isolateReady;
 
-  // Performance optimization - cache enabled options
   List<dynamic> _enabledOptions = [];
   List<dynamic> get enabledOptions => _enabledOptions;
 
@@ -138,7 +131,6 @@ class DTopBarController extends GetxController
   }
 
   void _initializeController() {
-    // Cache enabled options to avoid repeated filtering
     _enabledOptions = Get.find<DataController>()
             .siteData
             ?.landingPageModel
@@ -147,7 +139,6 @@ class DTopBarController extends GetxController
             .toList() ??
         [];
 
-    // Initialize animation controllers
     containerAnimationController = AnimationController(
       duration: const Duration(milliseconds: 600),
       vsync: this,
@@ -158,7 +149,6 @@ class DTopBarController extends GetxController
       vsync: this,
     );
 
-    // Setup animations
     containerSizeAnimation = Tween<double>(
       begin: 0.0,
       end: 1.0,
@@ -175,11 +165,9 @@ class DTopBarController extends GetxController
       curve: Curves.easeInOut,
     ));
 
-    // Initialize state arrays
     _visibleItems = List.filled(_enabledOptions.length, false);
     _greyedOutStates = List.filled(_enabledOptions.length, false);
 
-    // Start initialization sequence
     _initializeIsolate();
     _startEntranceAnimation();
   }
@@ -202,7 +190,6 @@ class DTopBarController extends GetxController
         }
       });
     } catch (e) {
-      // Fallback to main thread if isolate fails
       _isolateReady = false;
     }
   }
@@ -211,7 +198,7 @@ class DTopBarController extends GetxController
     switch (result.type) {
       case 'hover_state_result':
         _greyedOutStates = List<bool>.from(result.result['greyedOutStates']);
-        update(); // Trigger UI rebuild
+        update();
         break;
     }
   }
@@ -254,7 +241,6 @@ class DTopBarController extends GetxController
     _hoveredItem = itemText;
 
     if (_isolateReady && _isolateSendPort != null) {
-      // Use isolate for hover state calculation
       _isolateSendPort!
           .send(TopbarAnimationMessage(type: 'calculate_hover_state', data: {
         'hoveredItem': itemText,
@@ -262,7 +248,6 @@ class DTopBarController extends GetxController
         'items': _enabledOptions.map((e) => e.title as String).toList(),
       }));
     } else {
-      // Fallback to main thread
       _calculateHoverStateMainThread(itemText);
     }
   }
@@ -303,7 +288,6 @@ class DTopBarController extends GetxController
   }
 }
 
-// Utility function for scrolling - can be moved to a separate utils file
 void scrollToWidget(String title) {
   BuildContext? context;
 

@@ -165,6 +165,7 @@ class DTestimonialPage extends StatelessWidget {
       child: Column(
         spacing: 5,
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (testimonial.imageUrl != null)
             CircleAvatar(

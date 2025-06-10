@@ -37,6 +37,7 @@ dependencies:
   scroll_animator:
   flutter_svg: 
   http:
+  image_picker:
   
 
 

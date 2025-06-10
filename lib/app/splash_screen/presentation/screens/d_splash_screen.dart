@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portfolio_2025/app/splash_screen/controllers/splash_screen_controller.dart';
+import 'package:portfolio_2025/app/splash_screen/presentation/controllers/splash_screen_controller.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 

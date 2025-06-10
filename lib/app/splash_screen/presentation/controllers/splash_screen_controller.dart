@@ -47,7 +47,7 @@ class SplashScreenController extends GetxController {
   }
 
   void _startGreetingLoop() {
-    Timer.periodic(const Duration(milliseconds: 80), (timer) {
+    Timer.periodic(const Duration(milliseconds: 120), (timer) {
       currentGreeting = greetings[_currentIndex];
       update();
       _currentIndex = (_currentIndex + 1) % greetings.length;

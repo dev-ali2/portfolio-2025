@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:portfolio_2025/app/admin_panel/screens/login/login_screen.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
 class DFooter extends StatelessWidget {
@@ -17,10 +19,24 @@ class DFooter extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            IconButton(
+                onPressed: () {
+                  Get.to(() => LoginScreen());
+                },
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.transparent,
+                )),
+            Spacer(),
+            // SelectableText(
+            //   '© 2025 - All rights reserved',
+            //   style: FontsHelper.fontUbuntu.copyWith(color: Colors.grey),
+            // ),
             SelectableText(
               'Made in ❤️ with Flutter',
               style: FontsHelper.fontUbuntu.copyWith(color: Colors.grey),
             ),
+            Spacer(),
           ],
         ));
   }

@@ -21,14 +21,6 @@ class DProjectDetailPopup extends StatelessWidget {
           margin: const EdgeInsets.all(32),
           decoration: BoxDecoration(
             color: ColorsHelper.canvasColor.withAlpha(230),
-            // gradient: LinearGradient(
-            //   begin: Alignment.topLeft,
-            //   end: Alignment.bottomRight,
-            //   colors: [
-            //     Colors.black87.withAlpha(80),
-            //     ColorsHelper.secondaryCanvasColor.withAlpha(200),
-            //   ],
-            // ),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: ColorsHelper.white.withAlpha(100),
@@ -45,8 +37,8 @@ class DProjectDetailPopup extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Header with close button
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -114,13 +106,7 @@ class DProjectDetailPopup extends StatelessWidget {
                                   ),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
-                                      color: ColorsHelper.secondaryCanvasColor
-                                      // border: Border.all(
-                                      //   width: 1.2,
-                                      //   color: ColorsHelper.defaultPrimaryColor
-                                      //       .withAlpha(200),
-                                      // ),
-                                      ),
+                                      color: ColorsHelper.secondaryCanvasColor),
                                   child: Text(
                                     tech,
                                     style: FontsHelper.fontUbuntu.copyWith(

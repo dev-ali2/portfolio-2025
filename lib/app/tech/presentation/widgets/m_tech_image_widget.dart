@@ -79,11 +79,17 @@ class _MTechImageWidgetState extends State<MTechImageWidget> {
             spacing: 6,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
-                child: SizedBox(
-                  child: Image.network(widget.image, fit: BoxFit.fitHeight),
-                ),
-              ),
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Container(
+                    constraints: BoxConstraints(maxWidth: 60),
+                    child: Image.network(
+                      widget.image,
+                      fit: BoxFit.fitHeight,
+                      errorBuilder: (context, error, stackTrace) {
+                        return SizedBox.shrink();
+                      },
+                    ),
+                  )),
               Text(
                 widget.title,
                 style: FontsHelper.fontUbuntu.copyWith(

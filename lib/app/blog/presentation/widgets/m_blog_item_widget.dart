@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_2025/core/common/models/blog_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
@@ -12,7 +13,7 @@ class MBlogItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsetsGeometry.symmetric(vertical: 30),
-      width: 350,
+      width: 300,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border:
@@ -32,6 +33,13 @@ class MBlogItemWidget extends StatelessWidget {
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: Image.network(
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      CupertinoIcons.photo,
+                      size: 50,
+                      color: ColorsHelper.secondaryCanvasColor,
+                    );
+                  },
                   blogItem.imageUrl,
                   fit: BoxFit.cover,
                 )),

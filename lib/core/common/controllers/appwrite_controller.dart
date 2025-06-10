@@ -47,3 +47,5 @@ class AppwriteController extends GetxController {
     }
   }
 }
+
+String dataAsString = '''''';

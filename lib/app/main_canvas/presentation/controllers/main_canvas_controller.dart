@@ -7,7 +7,6 @@ import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
-// Isolate message classes for communication
 class PointerUpdateMessage {
   final Offset targetPosition;
   final Offset currentPosition;
@@ -36,7 +35,6 @@ class IsolateSetupMessage {
   IsolateSetupMessage(this.sendPort);
 }
 
-// Isolate entry point function
 void pointerComputationIsolate(SendPort mainSendPort) {
   final receivePort = ReceivePort();
   mainSendPort.send(IsolateSetupMessage(receivePort.sendPort));
@@ -78,16 +76,13 @@ void pointerComputationIsolate(SendPort mainSendPort) {
 
 class MainCanvasController extends GetxController
     with GetTickerProviderStateMixin {
-  // Core dependencies
   final dataController = Get.find<DataController>();
 
-  // Animation controllers
   late AnimationController elasticController;
   late AnimationController carouselController;
   late Animation<double> scaleAnimation;
   late Animation<Offset> slideAnimation;
 
-  // Position tracking
   final ValueNotifier<Offset> currentPositionNotifier =
       ValueNotifier(const Offset(0, 0));
   final ValueNotifier<bool> isNearTargetNotifier = ValueNotifier(false);
@@ -96,22 +91,18 @@ class MainCanvasController extends GetxController
   Offset _currentPosition = const Offset(0, 0);
   Timer? _updateTimer;
 
-  // Isolate related variables
   Isolate? _computationIsolate;
   ReceivePort? _mainReceivePort;
   SendPort? _isolateSendPort;
   bool _isolateReady = false;
 
-  // UI state
   bool _showScrollUpButton = false;
   bool get showScrollUpButton => _showScrollUpButton;
 
-  // Mouse pointer constants
   static const double circleSize = 12.0;
   static const double offsetX = -8.0;
   static const double offsetY = -8.0;
 
-  // Getters for UI
   Offset get currentPosition => currentPositionNotifier.value;
   bool get isNearTarget => isNearTargetNotifier.value;
   bool get shouldShowMousePointer =>
@@ -124,7 +115,6 @@ class MainCanvasController extends GetxController
   }
 
   void _initializeController() {
-    // Initialize animation controllers
     elasticController = AnimationController(
       duration: const Duration(milliseconds: 250),
       vsync: this,
@@ -135,7 +125,6 @@ class MainCanvasController extends GetxController
       vsync: this,
     );
 
-    // Setup animations
     scaleAnimation = Tween<double>(
       begin: 1.0,
       end: 1.4,
@@ -152,7 +141,6 @@ class MainCanvasController extends GetxController
       curve: Curves.easeInOut,
     ));
 
-    // Initialize isolate
     _initializeIsolate();
   }
 
@@ -285,16 +273,13 @@ class MainCanvasController extends GetxController
 
   @override
   void onClose() {
-    // Clean up resources
     _updateTimer?.cancel();
     _computationIsolate?.kill();
     _mainReceivePort?.close();
 
-    // Dispose animation controllers
     elasticController.dispose();
     carouselController.dispose();
 
-    // Dispose value notifiers
     currentPositionNotifier.dispose();
     isNearTargetNotifier.dispose();
 
