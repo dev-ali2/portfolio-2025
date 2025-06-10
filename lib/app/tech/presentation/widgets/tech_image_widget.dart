@@ -81,12 +81,12 @@ class _TechImageWidgetState extends State<TechImageWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 7),
                 child: Container(
-                  constraints: BoxConstraints(maxWidth: 60),
+                  constraints: const BoxConstraints(maxWidth: 60),
                   child: Image.network(
                     widget.image,
                     fit: BoxFit.fitHeight,
                     errorBuilder: (context, error, stackTrace) {
-                      return SizedBox.shrink();
+                      return const SizedBox.shrink();
                     },
                   ),
                 ),

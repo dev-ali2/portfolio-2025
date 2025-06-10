@@ -25,9 +25,8 @@ class FeaturedWorkModel {
     return {
       'isEnabled': isEnabled,
       'headerTitle': headerTitle,
-      'featuredProjects': featuredProjects
-          ?.map((item) => item.toJson())
-          .toList(),
+      'featuredProjects':
+          featuredProjects?.map((item) => item.toJson()).toList(),
     };
   }
 }

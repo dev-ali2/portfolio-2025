@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           color: ColorsHelper.defaultCanvasColor,
           theme: ThemeHelper.darkTheme,
-          title: 'Flutter Demo',
+          title: 'Ali Raza',
           // animationFactory: const ChromiumImpulse(),
           // animationFactory: const ChromiumEaseInOut(),
           home: const DSplashScreen(),

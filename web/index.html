@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
-
+  <!-- 
+    Welcome, curious Visiter! 👋
+    
+    I appreciate you taking the time to explore the source code.
+    It's always exciting to meet someone who digs deeper into how things work.
+    
+    This portfolio is built with Flutter for Web, combining the power of 
+    Dart with beautiful, responsive design principles.
+    
+    Feel free to reach out if you have any questions or just want to chat
+    about development, Flutter, or anything tech-related!
+    
+    Happy coding! 🚀
+    - Ali Raza
+  -->
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -127,28 +129,85 @@
       pointer-events: none;
     }
 
-    /* Responsive design for mobile */
-    @media (max-width: 768px) {
+    /* Breakpoints */
+    /* Desktop - default styles (min-width: 1025px) */
+    
+    /* Tablet (481px to 1024px) */
+    @media (max-width: 1024px) and (min-width: 481px) {
       .logo-section {
-        margin-bottom: 40px;
+        margin-bottom: 35px;
+      }
+      
+      .flutter-logo {
+        width: 70px;
+        height: 70px;
+      }
+      
+      .powered-by {
+        font-size: 11px;
+      }
+      
+      .flutter-text {
+        font-size: 30px;
+      }
+      
+      .progress-container {
+        width: 220px;
+      }
+    }
+
+    /* Phone (max-width: 480px) */
+    @media (max-width: 480px) {
+      .logo-section {
+        margin-bottom: 25px;
       }
       
       .flutter-logo {
         width: 60px;
         height: 60px;
-        margin-right: 20px;
+        margin-right: 12px;
       }
       
       .powered-by {
-        font-size: 12px;
+        font-size: 10px;
       }
       
       .flutter-text {
-        font-size: 24px;
+        font-size: 26px;
       }
       
       .progress-container {
         width: 200px;
+        margin-left: 0;
+      }
+    }
+
+    /* Small phones (max-width: 360px) */
+    @media (max-width: 360px) {
+      .logo-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      .flutter-logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+      
+      .powered-by {
+        font-size: 9px;
+      }
+      
+      .flutter-text {
+        font-size: 22px;
+      }
+      
+      .progress-container {
+        width: 180px;
       }
     }
   </style>
@@ -178,8 +237,6 @@
         document.getElementById('loading-screen').style.display = 'none';
       }, 500);
     });
-
- 
   </script>
 </body>
 </html>

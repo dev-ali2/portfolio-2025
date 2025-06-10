@@ -12,12 +12,12 @@ class AppwriteController extends GetxController {
   Future<void> initAppwrite() async {
     client = Client();
     try {
-      await dotenv.load(fileName: ".env");
+      await dotenv.load(fileName: "config.env");
       log('Env variables loaded: ${dotenv.env}');
       client
           .setEndpoint(dotenv.env['Endpoint'] ?? '')
-          .setProject(dotenv.env['Project'] ?? '')
-          .setSelfSigned(status: true);
+          .setProject(dotenv.env['Project'] ?? '');
+      // .setSelfSigned(status: true);
       isAppwriteInitialized = true;
       log('Appwrite initialized successfully.');
       // getSiteData();

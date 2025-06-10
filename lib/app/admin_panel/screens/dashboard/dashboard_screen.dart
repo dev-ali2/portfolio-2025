@@ -46,7 +46,7 @@ class DashboardScreen extends StatelessWidget {
         elevation: 2,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: ColorsHelper.white),
-          onPressed: () => Get.offAll(routeName: '/', () => DSplashScreen()),
+          onPressed: () => Get.offAll(routeName: '/', () => const DSplashScreen()),
         ),
         title: Obx(() => Text(
               'Welcome, ${controller.userName.value}',
@@ -207,7 +207,7 @@ class DashboardScreen extends StatelessWidget {
           textAlign: TextAlign.center),
       style: ElevatedButton.styleFrom(
           backgroundColor: ColorsHelper.defaultPrimaryColor.withOpacity(0.8),
-          padding: EdgeInsets.symmetric(vertical: 15, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 8),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       onPressed: onPressed,
@@ -218,7 +218,7 @@ class DashboardScreen extends StatelessWidget {
     return Obx(() {
       if (controller.isLoggingOut.value) {
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: SizedBox(
             width: 24,
             height: 24,
@@ -256,7 +256,7 @@ class DashboardScreen extends StatelessWidget {
 
   Widget _buildOptionCard(
       BuildContext context, TopBarOptionsModel option, int index) {
-    final cardWidth = 280.0;
+    const cardWidth = 280.0;
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,

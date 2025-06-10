@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/app/admin_panel/screens/testimonial_section/testimonial_section_controller.dart';
-import 'package:portfolio_2025/core/common/models/testimonial_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
@@ -77,7 +76,7 @@ class TestimonialsSectionScreen extends StatelessWidget {
                                   backgroundColor:
                                       ColorsHelper.secondaryCanvasColor,
                                 )
-                              : CircleAvatar(
+                              : const CircleAvatar(
                                   radius: 25,
                                   backgroundColor:
                                       ColorsHelper.defaultPrimaryColor,
@@ -100,7 +99,7 @@ class TestimonialsSectionScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit,
+                                icon: const Icon(Icons.edit,
                                     color: ColorsHelper.defaultPrimaryColor),
                                 onPressed: () =>
                                     controller.addOrUpdateTestimonial(
@@ -108,7 +107,7 @@ class TestimonialsSectionScreen extends StatelessWidget {
                               ),
                               IconButton(
                                 icon:
-                                    Icon(Icons.delete, color: Colors.redAccent),
+                                    const Icon(Icons.delete, color: Colors.redAccent),
                                 onPressed: () =>
                                     _confirmDeleteTestimonial(context, index),
                               ),
@@ -155,7 +154,7 @@ class TestimonialsSectionScreen extends StatelessWidget {
             borderSide: BorderSide.none),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: ColorsHelper.defaultPrimaryColor)),
+            borderSide: const BorderSide(color: ColorsHelper.defaultPrimaryColor)),
       ),
     );
   }

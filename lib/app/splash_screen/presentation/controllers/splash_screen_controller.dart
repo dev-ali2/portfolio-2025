@@ -11,27 +11,37 @@ class SplashScreenController extends GetxController {
     'Bonjour',
     'Hallo',
     'Ciao',
-    'こんにちは',
-    'नमस्ते',
-    'مرحبا',
-    'Привет',
-    '你好',
+    'Konnichiwa',
+    'Namaste',
+    'Marhaba',
+    'Privet',
+    'Ni Hao',
     'Olá',
     'Hej',
-    'Здравствуйте',
-    'שלום',
-    'Γεια σας',
+    'Zdravstvuyte',
+    'Shalom',
+    'Yia sas',
     'Merhaba',
-    '안녕하세요',
+    'Annyeonghaseyo',
     'Jambo',
     'Sawubona',
     'Xin chào',
-    'สวัสดี',
+    'Sawasdee',
     'Kamusta',
     'Selamat',
     'Salam',
     'Habari',
-    'Aloha'
+    'Aloha',
+    'Salaam',
+    'Dzien dobry',
+    'Dobrý den',
+    'Jó napot',
+    'Bună ziua',
+    'Dobar dan',
+    'Zdravo',
+    'Sveiki',
+    'Tere',
+    'Labdien'
   ];
 
   int _currentIndex = 0;
@@ -42,7 +52,7 @@ class SplashScreenController extends GetxController {
 
     _startGreetingLoop();
     await Get.find<AppwriteController>().initAppwrite();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     Get.find<AppwriteController>().getSiteData();
   }
 

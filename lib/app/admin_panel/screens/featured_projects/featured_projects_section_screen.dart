@@ -73,12 +73,12 @@ class FeaturedProjectsScreen extends StatelessWidget {
                                   height: 50,
                                   child: Image.network(project.projectImageUrl,
                                       fit: BoxFit.cover,
-                                      errorBuilder: (c, e, s) => Icon(
+                                      errorBuilder: (c, e, s) => const Icon(
                                           Icons.broken_image,
                                           color: ColorsHelper
                                               .defaultPrimaryColor)),
                                 )
-                              : CircleAvatar(
+                              : const CircleAvatar(
                                   backgroundColor:
                                       ColorsHelper.defaultPrimaryColor,
                                   child:
@@ -98,7 +98,7 @@ class FeaturedProjectsScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit,
+                                icon: const Icon(Icons.edit,
                                     color: ColorsHelper.defaultPrimaryColor),
                                 onPressed: () =>
                                     controller.addOrUpdateFeaturedProject(
@@ -106,7 +106,7 @@ class FeaturedProjectsScreen extends StatelessWidget {
                               ),
                               IconButton(
                                 icon:
-                                    Icon(Icons.delete, color: Colors.redAccent),
+                                    const Icon(Icons.delete, color: Colors.redAccent),
                                 onPressed: () =>
                                     _confirmDeleteProject(context, index),
                               ),
@@ -153,7 +153,7 @@ class FeaturedProjectsScreen extends StatelessWidget {
             borderSide: BorderSide.none),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: ColorsHelper.defaultPrimaryColor)),
+            borderSide: const BorderSide(color: ColorsHelper.defaultPrimaryColor)),
       ),
     );
   }

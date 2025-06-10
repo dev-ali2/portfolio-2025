@@ -9,7 +9,6 @@ import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
 import 'dart:convert';
 
 import 'package:portfolio_2025/core/common/models/data_model.dart';
-import 'package:portfolio_2025/core/common/models/landing_page_model.dart';
 import 'package:portfolio_2025/app/splash_screen/presentation/screens/d_splash_screen.dart';
 
 class DashboardController extends GetxController {
@@ -48,7 +47,7 @@ class DashboardController extends GetxController {
     } on AppwriteException catch (e) {
       errorMessage.value = "Error fetching data: ${e.message}";
       if (e.code == 401) {
-        Get.offAll(() => DSplashScreen());
+        Get.offAll(() => const DSplashScreen());
         return;
       }
       if (siteData.value == null) {
@@ -120,7 +119,7 @@ class DashboardController extends GetxController {
     isLoggingOut.value = true;
     try {
       await _account.deleteSession(sessionId: 'current');
-      Get.offAll(routeName: '/', () => DSplashScreen());
+      Get.offAll(routeName: '/', () => const DSplashScreen());
     } on AppwriteException catch (e) {
       Get.snackbar(
         "Logout Error",

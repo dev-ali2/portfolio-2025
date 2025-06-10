@@ -70,7 +70,7 @@ class DAboutPage extends StatelessWidget {
                                             .edudationList?[i].logoImageUrl ??
                                         '',
                                     errorBuilder: (context, error, stackTrace) {
-                                      return SizedBox.shrink();
+                                      return const SizedBox.shrink();
                                     },
                                   ),
                                   title: SelectableText(

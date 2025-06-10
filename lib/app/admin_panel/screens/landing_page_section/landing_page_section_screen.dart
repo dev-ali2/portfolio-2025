@@ -44,7 +44,7 @@ class LandingPageSectionScreen extends StatelessWidget {
               const SizedBox(height: 16),
               _buildTextField(
                   controller.yearsOfExperienceController, 'Years of Experience',
-                  keyboardType: TextInputType.numberWithOptions(decimal: true)),
+                  keyboardType: const TextInputType.numberWithOptions(decimal: true)),
               const SizedBox(height: 16),
               _buildTextField(
                   controller.projectsCompletedController, 'Projects Completed',
@@ -105,7 +105,7 @@ class LandingPageSectionScreen extends StatelessWidget {
             borderSide: BorderSide.none),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: ColorsHelper.defaultPrimaryColor)),
+            borderSide: const BorderSide(color: ColorsHelper.defaultPrimaryColor)),
       ),
     );
   }

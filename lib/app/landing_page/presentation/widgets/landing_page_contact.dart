@@ -74,6 +74,7 @@ class LandingPageContact extends StatelessWidget {
                     overlayColor: WidgetStateProperty.all(
                         ColorsHelper.defaultPrimaryColor.withAlpha(50)),
                     elevation: WidgetStateProperty.all(5),
+                    shadowColor: WidgetStateProperty.all(Colors.transparent),
                     backgroundColor: WidgetStateProperty.all(
                       Colors.white.withAlpha(20),
                     )),

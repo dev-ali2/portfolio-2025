@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart' as appwrite_models;
 import 'package:portfolio_2025/app/admin_panel/screens/dashboard/dashboard_screen.dart';
 
 class LoginController extends GetxController {

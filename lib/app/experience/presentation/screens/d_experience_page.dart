@@ -74,7 +74,7 @@ class DExperiencePage extends StatelessWidget {
                           '${dataController.siteData!.workExperience.workExperienceList[i].companyLogoImageUrl}',
                           fit: BoxFit.cover,
                           errorBuilder: (context, error, stackTrace) {
-                            return SizedBox.shrink();
+                            return const SizedBox.shrink();
                           },
                         ),
                       ),

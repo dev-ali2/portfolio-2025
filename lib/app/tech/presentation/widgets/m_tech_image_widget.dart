@@ -81,12 +81,12 @@ class _MTechImageWidgetState extends State<MTechImageWidget> {
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Container(
-                    constraints: BoxConstraints(maxWidth: 60),
+                    constraints: const BoxConstraints(maxWidth: 60),
                     child: Image.network(
                       widget.image,
                       fit: BoxFit.fitHeight,
                       errorBuilder: (context, error, stackTrace) {
-                        return SizedBox.shrink();
+                        return const SizedBox.shrink();
                       },
                     ),
                   )),

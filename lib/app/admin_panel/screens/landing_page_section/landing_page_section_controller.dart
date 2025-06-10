@@ -64,11 +64,6 @@ class LandingPageSectionController extends GetxController {
     }
     LandingPageModel? originalLandingPage =
         _dashboardController.siteData.value!.landingPageModel;
-    if (originalLandingPage == null) {
-      Get.snackbar("Error", "Original landing page data is missing.",
-          backgroundColor: Colors.red);
-      return;
-    }
 
     double years = double.tryParse(yearsOfExperienceController.text) ??
         originalLandingPage.yearsOfExperience;

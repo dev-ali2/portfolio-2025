@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:io' if (dart.library.html) 'dart:html' show File;
-import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -35,7 +33,7 @@ class ImageGalleryController extends GetxController {
   void onInit() {
     super.onInit();
     if (_bucketId == null) {
-      final errorMsg =
+      const errorMsg =
           "IMAGE_BUCKET_ID (or Bucket_id) not found in .env file. Please ensure it's set.";
       errorMessage.value = errorMsg;
       isLoading.value = false;
@@ -62,7 +60,7 @@ class ImageGalleryController extends GetxController {
     errorMessage.value = '';
     try {
       final appwrite_models.FileList result =
-          await _appwriteStorage.listFiles(bucketId: _bucketId!);
+          await _appwriteStorage.listFiles(bucketId: _bucketId);
 
       List<DisplayableImageFile> newDisplayableFiles = [];
       for (var file in result.files) {
@@ -164,7 +162,7 @@ class ImageGalleryController extends GetxController {
         }
 
         await _appwriteStorage.createFile(
-          bucketId: _bucketId!,
+          bucketId: _bucketId,
           fileId: ID.unique(),
           file: fileToUpload,
           permissions: [Permission.read(Role.any())],

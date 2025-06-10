@@ -105,10 +105,11 @@ class MProjectDetailPopup extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       Wrap(
                         spacing: 8,
                         runSpacing: 8,
+                        alignment: WrapAlignment.center,
                         children: project.technologies
                             .map((tech) => Container(
                                   padding: const EdgeInsets.symmetric(
@@ -148,10 +149,11 @@ class MProjectDetailPopup extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 15),
                       Wrap(
                         runSpacing: 30,
                         spacing: 30,
+                        alignment: WrapAlignment.center,
                         children: [
                           ...project.platforms.map((platform) => Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -192,6 +194,7 @@ class MProjectDetailPopup extends StatelessWidget {
                       Wrap(
                         runSpacing: 10,
                         spacing: 10,
+                        alignment: WrapAlignment.center,
                         children: [
                           ...project.availableOn!.map((availableOn) => Row(
                                 mainAxisSize: MainAxisSize.min,

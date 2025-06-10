@@ -64,7 +64,7 @@ class TAboutPage extends StatelessWidget {
                                       .logoImageUrl ??
                                   '',
                               errorBuilder: (context, error, stackTrace) {
-                                return SizedBox.shrink();
+                                return const SizedBox.shrink();
                               },
                             ),
                             title: SelectableText(

@@ -99,7 +99,7 @@ class WorkExperienceScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit,
+                                icon: const Icon(Icons.edit,
                                     color: ColorsHelper.defaultPrimaryColor),
                                 onPressed: () =>
                                     controller.addOrUpdateWorkExperienceItem(
@@ -107,7 +107,7 @@ class WorkExperienceScreen extends StatelessWidget {
                               ),
                               IconButton(
                                 icon:
-                                    Icon(Icons.delete, color: Colors.redAccent),
+                                    const Icon(Icons.delete, color: Colors.redAccent),
                                 onPressed: () => _confirmDeleteExperienceItem(
                                     context, index),
                               ),
@@ -155,7 +155,7 @@ class WorkExperienceScreen extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: ColorsHelper.defaultPrimaryColor),
+          borderSide: const BorderSide(color: ColorsHelper.defaultPrimaryColor),
         ),
       ),
     );

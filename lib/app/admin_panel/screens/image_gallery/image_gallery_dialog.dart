@@ -22,7 +22,7 @@ class ImageGalleryDialog extends StatelessWidget {
         elevation: 2,
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh),
+            icon: const Icon(Icons.refresh),
             tooltip: "Refresh Images",
             onPressed: () => controller.fetchImages(),
           )
@@ -64,7 +64,7 @@ class ImageGalleryDialog extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.error_outline, color: Colors.redAccent, size: 50),
+                  const Icon(Icons.error_outline, color: Colors.redAccent, size: 50),
                   const SizedBox(height: 10),
                   Text(
                     controller.errorMessage.value,

@@ -9,6 +9,7 @@ class DFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        height: 40,
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         margin: const EdgeInsets.only(top: 40),
         decoration: const BoxDecoration(
@@ -23,11 +24,11 @@ class DFooter extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => LoginScreen());
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.settings,
                   color: Colors.transparent,
                 )),
-            Spacer(),
+            const Spacer(),
             // SelectableText(
             //   '© 2025 - All rights reserved',
             //   style: FontsHelper.fontUbuntu.copyWith(color: Colors.grey),
@@ -36,7 +37,7 @@ class DFooter extends StatelessWidget {
               'Made in ❤️ with Flutter',
               style: FontsHelper.fontUbuntu.copyWith(color: Colors.grey),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ));
   }

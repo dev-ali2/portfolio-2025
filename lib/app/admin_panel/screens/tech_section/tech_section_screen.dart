@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/app/admin_panel/screens/tech_section/tech_section_controller.dart';
-import 'package:portfolio_2025/core/common/models/tech_stack_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
@@ -105,14 +104,14 @@ class TechSectionScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit,
+                                icon: const Icon(Icons.edit,
                                     color: ColorsHelper.defaultPrimaryColor),
                                 onPressed: () => controller.addOrUpdateTechItem(
                                     existingItem: item, index: index),
                               ),
                               IconButton(
                                 icon:
-                                    Icon(Icons.delete, color: Colors.redAccent),
+                                    const Icon(Icons.delete, color: Colors.redAccent),
                                 onPressed: () =>
                                     _confirmDeleteTechItem(context, index),
                               ),
@@ -160,7 +159,7 @@ class TechSectionScreen extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
-          borderSide: BorderSide(color: ColorsHelper.defaultPrimaryColor),
+          borderSide: const BorderSide(color: ColorsHelper.defaultPrimaryColor),
         ),
       ),
     );

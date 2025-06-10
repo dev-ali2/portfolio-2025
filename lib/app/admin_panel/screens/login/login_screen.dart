@@ -42,12 +42,12 @@ class LoginScreen extends StatelessWidget {
                       labelText: 'Email',
                       labelStyle: FontsHelper.poppinsFont
                           .copyWith(color: ColorsHelper.white),
-                      prefixIcon: Icon(Icons.email,
+                      prefixIcon: const Icon(Icons.email,
                           color: ColorsHelper.defaultPrimaryColor),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
                         borderSide:
-                            BorderSide(color: ColorsHelper.defaultPrimaryColor),
+                            const BorderSide(color: ColorsHelper.defaultPrimaryColor),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -56,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                             color: ColorsHelper.defaultPrimaryColor, width: 2),
                       ),
                     ),
@@ -72,12 +72,12 @@ class LoginScreen extends StatelessWidget {
                       labelText: 'Password',
                       labelStyle: FontsHelper.poppinsFont
                           .copyWith(color: ColorsHelper.white),
-                      prefixIcon: Icon(Icons.lock,
+                      prefixIcon: const Icon(Icons.lock,
                           color: ColorsHelper.defaultPrimaryColor),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
                         borderSide:
-                            BorderSide(color: ColorsHelper.defaultPrimaryColor),
+                            const BorderSide(color: ColorsHelper.defaultPrimaryColor),
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -86,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                             color: ColorsHelper.defaultPrimaryColor, width: 2),
                       ),
                     ),

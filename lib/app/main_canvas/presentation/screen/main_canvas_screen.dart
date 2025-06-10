@@ -84,7 +84,6 @@ class MainCanvasScreen extends StatelessWidget {
           return true;
         },
         child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
           child: GetBuilder<MqHelper>(
             id: 'canvas options',
             builder: (mqController) => Column(

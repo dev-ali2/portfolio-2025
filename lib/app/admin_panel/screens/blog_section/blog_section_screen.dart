@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:portfolio_2025/app/admin_panel/screens/blog_section/blog_section_controller.dart';
-import 'package:portfolio_2025/core/common/models/blog_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
 
@@ -74,13 +73,13 @@ class BlogSectionScreen extends StatelessWidget {
                                   height: 60,
                                   child: Image.network(item.imageUrl,
                                       fit: BoxFit.cover,
-                                      errorBuilder: (c, e, s) => Icon(
+                                      errorBuilder: (c, e, s) => const Icon(
                                           Icons.broken_image,
                                           color:
                                               ColorsHelper.defaultPrimaryColor,
                                           size: 30)),
                                 )
-                              : CircleAvatar(
+                              : const CircleAvatar(
                                   backgroundColor:
                                       ColorsHelper.defaultPrimaryColor,
                                   child: Icon(Icons.article_outlined,
@@ -103,14 +102,14 @@ class BlogSectionScreen extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               IconButton(
-                                icon: Icon(Icons.edit,
+                                icon: const Icon(Icons.edit,
                                     color: ColorsHelper.defaultPrimaryColor),
                                 onPressed: () => controller.addOrUpdateBlogItem(
                                     existingItem: item, index: index),
                               ),
                               IconButton(
                                 icon:
-                                    Icon(Icons.delete, color: Colors.redAccent),
+                                    const Icon(Icons.delete, color: Colors.redAccent),
                                 onPressed: () =>
                                     _confirmDeleteBlogItem(context, index),
                               ),
@@ -157,7 +156,7 @@ class BlogSectionScreen extends StatelessWidget {
             borderSide: BorderSide.none),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: ColorsHelper.defaultPrimaryColor)),
+            borderSide: const BorderSide(color: ColorsHelper.defaultPrimaryColor)),
       ),
     );
   }

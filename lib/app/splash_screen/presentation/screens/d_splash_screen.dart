@@ -19,16 +19,28 @@ class DSplashScreen extends StatelessWidget {
             height: MqHelper.height,
             width: MqHelper.width,
             child: Center(
-              child: Text(
-                controller.currentGreeting,
-                style: GoogleFonts.notoSans(
-                    color: ColorsHelper.white,
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold),
-                // style: TextStyle(
-                //     fontFamily: 'NotoSans',
-                //     fontSize: 40,
-                //     color: ColorsHelper.white),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 5,
+                children: [
+                  Text(
+                    '👋',
+                    style: GoogleFonts.notoSans(
+                      fontSize: 35,
+                    ),
+                  ),
+                  Text(
+                    controller.currentGreeting,
+                    style: GoogleFonts.notoSans(
+                        color: ColorsHelper.white,
+                        fontSize: 35,
+                        fontWeight: FontWeight.w500),
+                    // style: TextStyle(
+                    //     fontFamily: 'NotoSans',
+                    //     fontSize: 40,
+                    //     color: ColorsHelper.white),
+                  ),
+                ],
               ),
             ),
           ),

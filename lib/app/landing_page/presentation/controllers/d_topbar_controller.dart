@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:ui';
 import 'dart:async';
 import 'dart:isolate';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
