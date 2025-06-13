@@ -71,6 +71,12 @@ class TLandingContact extends StatelessWidget {
               filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
               child: ElevatedButton.icon(
                 style: ButtonStyle(
+                    side: WidgetStateProperty.all(
+                      BorderSide(
+                        color: ColorsHelper.white.withAlpha(70),
+                        width: 0.6,
+                      ),
+                    ),
                     overlayColor: WidgetStateProperty.all(
                         ColorsHelper.defaultPrimaryColor.withAlpha(50)),
                     elevation: WidgetStateProperty.all(5),

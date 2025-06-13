@@ -138,17 +138,18 @@ class MProjectDetailPopup extends StatelessWidget {
                       const SizedBox(height: 20),
 
                       // Platforms Section
-                      Center(
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Supported Platforms',
-                          style: FontsHelper.poppinsFont.copyWith(
-                            color: ColorsHelper.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                      if (project.platforms.isNotEmpty)
+                        Center(
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Supported Platform',
+                            style: FontsHelper.poppinsFont.copyWith(
+                              color: ColorsHelper.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
-                      ),
                       const SizedBox(height: 15),
                       Wrap(
                         runSpacing: 30,
@@ -179,17 +180,19 @@ class MProjectDetailPopup extends StatelessWidget {
                       const SizedBox(height: 20),
 
                       // Links Section
-                      Center(
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Available on',
-                          style: FontsHelper.poppinsFont.copyWith(
-                            color: ColorsHelper.white,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                      if (project.availableOn != null &&
+                          project.availableOn!.isNotEmpty)
+                        Center(
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Availability',
+                            style: FontsHelper.poppinsFont.copyWith(
+                              color: ColorsHelper.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
-                      ),
                       const SizedBox(height: 15),
                       Wrap(
                         runSpacing: 10,

@@ -48,7 +48,7 @@ class DataController extends GetxController {
       }
 
       Get.offAll(
-          duration: const Duration(milliseconds: 1500),
+          duration: const Duration(milliseconds: 1000),
           transition: Transition.fadeIn,
           routeName: '/',
           () => AnimatedPrimaryScrollController(

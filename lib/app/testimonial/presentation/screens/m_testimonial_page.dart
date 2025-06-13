@@ -44,7 +44,8 @@ class MTestimonialPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const MPagesHeader(title: 'Endorsements'),
+              MPagesHeader(
+                  title: '${dataController.siteData?.testimonial.headerTitle}'),
 
               Container(
                 constraints: const BoxConstraints(maxHeight: 340),

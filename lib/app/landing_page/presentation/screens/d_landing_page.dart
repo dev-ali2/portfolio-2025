@@ -11,8 +11,67 @@ import 'package:portfolio_2025/core/common/keys/widget_keys.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
-class DLandingPage extends StatelessWidget {
+class DLandingPage extends StatefulWidget {
   DLandingPage({super.key});
+
+  @override
+  State<DLandingPage> createState() => _DLandingPageState();
+}
+
+class _DLandingPageState extends State<DLandingPage>
+    with TickerProviderStateMixin {
+  late AnimationController fadeAnimController;
+  late Animation<double> fadeAnim;
+  late Animation<double> fadeAnim2;
+  late AnimationController fadeAnim2Controller;
+  bool showTopBar = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    fadeAnimController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+    fadeAnim2Controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1200),
+    );
+
+    fadeAnim = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: fadeAnimController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    fadeAnim2 = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: fadeAnim2Controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+    startAnimation();
+  }
+
+  @override
+  void dispose() {
+    fadeAnimController.dispose();
+    fadeAnim2Controller.dispose();
+    super.dispose();
+  }
+
+  void startAnimation() async {
+    await Future.delayed(const Duration(milliseconds: 1400));
+    fadeAnimController.forward().then((_) async {
+      await Future.delayed(const Duration(milliseconds: 800));
+
+      fadeAnim2Controller.forward();
+      showTopBar = true;
+      setState(() {});
+    });
+  }
 
   final dataController = Get.find<DataController>();
 
@@ -24,23 +83,37 @@ class DLandingPage extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(
-            key: landingPageKey,
-            width: MqHelper.width,
             height: MqHelper.height,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: MemoryImage(dataController.imageData ?? Uint8List(0)),
+            width: MqHelper.width,
+            color: Colors.black87,
+            child: FadeTransition(
+              opacity: fadeAnim2,
+              child: Image.memory(
+                dataController.imageData ?? Uint8List(0),
                 fit: BoxFit.cover,
               ),
             ),
-            child: Container(
-              child: Center(
-                child: Column(
-                  spacing: 40,
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SelectableText(
+          ),
+          SizedBox(
+            key: landingPageKey,
+            width: MqHelper.width,
+            height: MqHelper.height,
+            // decoration: BoxDecoration(
+
+            //     image: DecorationImage(
+            //       image: MemoryImage(dataController.imageData ?? Uint8List(0)),
+            //       fit: BoxFit.cover,
+            //     ),
+            //     ),
+            child: Center(
+              child: Column(
+                spacing: 40,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  FadeTransition(
+                    opacity: fadeAnim,
+                    child: SelectableText(
                       dataController.siteData?.landingPageModel.name ?? '',
                       style: GoogleFonts.poppins(
                           color: ColorsHelper.white,
@@ -49,7 +122,10 @@ class DLandingPage extends StatelessWidget {
                           fontSize: 100,
                           fontWeight: FontWeight.bold),
                     ),
-                    SelectableText(
+                  ),
+                  FadeTransition(
+                    opacity: fadeAnim2,
+                    child: SelectableText(
                       dataController
                               .siteData?.landingPageModel.shortDescription ??
                           '',
@@ -60,18 +136,22 @@ class DLandingPage extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    if (dataController.siteData!.contactSection.isEnabled)
-                      LandingPageContact(),
-                  ],
-                ),
+                  ),
+                  if (dataController.siteData!.contactSection.isEnabled)
+                    FadeTransition(
+                        opacity: fadeAnim2, child: LandingPageContact()),
+                ],
               ),
             ),
           ),
-          const Positioned(top: 10, child: DTopbar()),
+          if (showTopBar)
+            Positioned(
+                top: 10,
+                child: FadeTransition(opacity: fadeAnim2, child: DTopbar())),
           // const Positioned(bottom: 10, child: BlinkingDownArrowCircle())
-          const Positioned(
+          Positioned(
             bottom: 20,
-            child: BottomQuickInfo(),
+            child: FadeTransition(opacity: fadeAnim2, child: BottomQuickInfo()),
           ),
         ],
       ),

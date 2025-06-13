@@ -120,14 +120,15 @@ class DProjectDetailPopup extends StatelessWidget {
                       const SizedBox(height: 24),
 
                       // Platforms Section
-                      Text(
-                        'Supported Platforms',
-                        style: FontsHelper.poppinsFont.copyWith(
-                          color: ColorsHelper.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 22,
+                      if (project.platforms.isNotEmpty)
+                        Text(
+                          'Supported Platform',
+                          style: FontsHelper.poppinsFont.copyWith(
+                            color: ColorsHelper.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22,
+                          ),
                         ),
-                      ),
                       const SizedBox(height: 15),
                       Wrap(
                         runSpacing: 30,
@@ -157,14 +158,16 @@ class DProjectDetailPopup extends StatelessWidget {
                       const SizedBox(height: 24),
 
                       // Links Section
-                      Text(
-                        'Available on',
-                        style: FontsHelper.poppinsFont.copyWith(
-                          color: ColorsHelper.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 22,
+                      if (project.availableOn != null &&
+                          project.availableOn!.isNotEmpty)
+                        Text(
+                          'Availability',
+                          style: FontsHelper.poppinsFont.copyWith(
+                            color: ColorsHelper.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 22,
+                          ),
                         ),
-                      ),
                       const SizedBox(height: 15),
                       Wrap(
                         runSpacing: 30,

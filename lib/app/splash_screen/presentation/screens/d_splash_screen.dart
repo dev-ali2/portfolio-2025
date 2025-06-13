@@ -23,12 +23,12 @@ class DSplashScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 spacing: 5,
                 children: [
-                  Text(
-                    '👋',
-                    style: GoogleFonts.notoSans(
-                      fontSize: 35,
-                    ),
-                  ),
+                  // Text(
+                  //   '👋',
+                  //   style: GoogleFonts.notoSans(
+                  //     fontSize: 35,
+                  //   ),
+                  // ),
                   Text(
                     controller.currentGreeting,
                     style: GoogleFonts.notoSans(

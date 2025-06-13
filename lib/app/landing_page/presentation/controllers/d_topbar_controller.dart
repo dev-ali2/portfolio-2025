@@ -300,7 +300,8 @@ void scrollToWidget(String title) {
     context = projectsPageKey.currentContext;
   } else if (lowercaseTitle.contains('experience')) {
     context = workExperiencePageKey.currentContext;
-  } else if (lowercaseTitle.contains('blog')) {
+  } else if (lowercaseTitle.contains('blog') ||
+      lowercaseTitle.contains('blogs')) {
     context = blogPageKey.currentContext;
   } else if (lowercaseTitle.contains('testimonials') ||
       lowercaseTitle.contains('reviews') ||

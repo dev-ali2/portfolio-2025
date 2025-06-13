@@ -44,7 +44,8 @@ class TTestimonialPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const PagesHeader(title: 'Endorsements'),
+              PagesHeader(
+                  title: '${dataController.siteData?.testimonial.headerTitle}'),
 
               SizedBox(
                 height: 280,

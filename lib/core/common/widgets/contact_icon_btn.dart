@@ -27,6 +27,12 @@ class ContactIconBtn extends StatelessWidget {
           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: IconButton(
             style: ButtonStyle(
+                side: WidgetStateProperty.all(
+                  BorderSide(
+                    color: ColorsHelper.white.withAlpha(70),
+                    width: 0.6,
+                  ),
+                ),
                 overlayColor: WidgetStateProperty.all(
                     ColorsHelper.defaultPrimaryColor.withAlpha(70)),
                 elevation: WidgetStateProperty.all(5),
