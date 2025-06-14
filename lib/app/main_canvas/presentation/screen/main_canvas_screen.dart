@@ -89,7 +89,7 @@ class MainCanvasScreen extends StatelessWidget {
             builder: (mqController) => Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                ResponsiveWidget(
+                const ResponsiveWidget(
                     mobileWidget: MLandingPage(),
                     tabletWidget: TLandingPage(),
                     desktopWidget: DLandingPage()),

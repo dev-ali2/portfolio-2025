@@ -12,7 +12,7 @@ import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/mq_helper.dart';
 
 class DLandingPage extends StatefulWidget {
-  DLandingPage({super.key});
+  const DLandingPage({super.key});
 
   @override
   State<DLandingPage> createState() => _DLandingPageState();
@@ -147,11 +147,11 @@ class _DLandingPageState extends State<DLandingPage>
           if (showTopBar)
             Positioned(
                 top: 10,
-                child: FadeTransition(opacity: fadeAnim2, child: DTopbar())),
+                child: FadeTransition(opacity: fadeAnim2, child: const DTopbar())),
           // const Positioned(bottom: 10, child: BlinkingDownArrowCircle())
           Positioned(
             bottom: 20,
-            child: FadeTransition(opacity: fadeAnim2, child: BottomQuickInfo()),
+            child: FadeTransition(opacity: fadeAnim2, child: const BottomQuickInfo()),
           ),
         ],
       ),
