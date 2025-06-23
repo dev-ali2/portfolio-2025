@@ -17,7 +17,7 @@ class TTechImageWidget extends StatefulWidget {
 class _TTechImageWidgetState extends State<TTechImageWidget> {
   final dataController = Get.find<DataController>();
   bool isHovering = false;
-  double _maxWidth = 70;
+  double _maxWidth = 100;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _TTechImageWidgetState extends State<TTechImageWidget> {
     textPainter.layout();
 
     setState(() {
-      _maxWidth = 70 + 10 + textPainter.width + 8;
+      _maxWidth = 50 + 10 + textPainter.width + 8;
     });
   }
 
@@ -65,7 +65,7 @@ class _TTechImageWidgetState extends State<TTechImageWidget> {
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           padding: const EdgeInsets.all(4),
-          height: 60,
+          height: 55,
           width: _maxWidth,
           decoration: BoxDecoration(
               color: ColorsHelper.secondaryCanvasColor,
@@ -81,7 +81,7 @@ class _TTechImageWidgetState extends State<TTechImageWidget> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 7),
                 child: Container(
-                  constraints: const BoxConstraints(maxWidth: 60),
+                  constraints: const BoxConstraints(maxWidth: 50),
                   child: Image.network(
                     widget.image,
                     fit: BoxFit.fitHeight,
@@ -95,7 +95,7 @@ class _TTechImageWidgetState extends State<TTechImageWidget> {
                 widget.title,
                 style: FontsHelper.fontUbuntu.copyWith(
                     color: ColorsHelper.white,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     fontSize: 14),
               ),
             ],

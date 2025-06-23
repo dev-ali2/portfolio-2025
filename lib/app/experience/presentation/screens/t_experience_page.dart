@@ -28,11 +28,13 @@ class TExperiencePage extends StatelessWidget {
                       .siteData!.workExperience.workExperienceList.length,
                   (i) => Container(
                     padding: const EdgeInsets.only(
-                        left: 20, right: 20, top: 10, bottom: 10),
+                        left: 20, right: 20, top: 20, bottom: 0),
                     margin: const EdgeInsets.symmetric(
                       horizontal: 30,
                     ),
                     decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.white.withAlpha(40), width: 1),
                         borderRadius: BorderRadius.circular(35),
                         color: ColorsHelper.secondaryCanvasColor),
                     child: ListTile(
@@ -47,9 +49,9 @@ class TExperiencePage extends StatelessWidget {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                '(${dataController.siteData!.workExperience.workExperienceList[i].startTime} --> ${dataController.siteData!.workExperience.workExperienceList[i].endTime})',
+                                '${dataController.siteData!.workExperience.workExperienceList[i].startTime} - ${dataController.siteData!.workExperience.workExperienceList[i].endTime}',
                                 style: FontsHelper.fontUbuntu
-                                    .copyWith(color: Colors.grey, fontSize: 12),
+                                    .copyWith(color: Colors.grey, fontSize: 13),
                               )),
                           const SizedBox(
                             height: 10,
@@ -82,6 +84,7 @@ class TExperiencePage extends StatelessWidget {
                           '${dataController.siteData!.workExperience.workExperienceList[i].position} @ ${dataController.siteData!.workExperience.workExperienceList[i].companyName}',
                           style: FontsHelper.fontUbuntu.copyWith(
                               fontSize: 19,
+                              height: 0.7,
                               color: ColorsHelper.white,
                               fontWeight: FontWeight.bold)),
                     ),

@@ -17,7 +17,7 @@ class MTechImageWidget extends StatefulWidget {
 class _MTechImageWidgetState extends State<MTechImageWidget> {
   final dataController = Get.find<DataController>();
   bool isHovering = false;
-  double _maxWidth = 60;
+  double _maxWidth = 100;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _MTechImageWidgetState extends State<MTechImageWidget> {
     textPainter.layout();
 
     setState(() {
-      _maxWidth = 60 + 10 + textPainter.width + 8;
+      _maxWidth = 30 + 10 + textPainter.width + 8;
     });
   }
 
@@ -81,7 +81,7 @@ class _MTechImageWidgetState extends State<MTechImageWidget> {
               Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: Container(
-                    constraints: const BoxConstraints(maxWidth: 60),
+                    constraints: const BoxConstraints(maxWidth: 40),
                     child: Image.network(
                       widget.image,
                       fit: BoxFit.fitHeight,
@@ -94,7 +94,7 @@ class _MTechImageWidgetState extends State<MTechImageWidget> {
                 widget.title,
                 style: FontsHelper.fontUbuntu.copyWith(
                     color: ColorsHelper.white,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w500,
                     fontSize: 12),
               ),
             ],

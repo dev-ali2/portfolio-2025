@@ -116,8 +116,9 @@ class MProjectWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: SelectableText(
-              maxLines: 2,
+            child: Text(
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
               project.shortDescription,
               style: FontsHelper.poppinsFont
                   .copyWith(color: ColorsHelper.white, fontSize: 15),
@@ -139,6 +140,9 @@ class MProjectWidget extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 )),
           ),
+          const SizedBox(
+            height: 5,
+          )
         ],
       ),
     );

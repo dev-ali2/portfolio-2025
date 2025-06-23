@@ -28,11 +28,13 @@ class DExperiencePage extends StatelessWidget {
                       .siteData!.workExperience.workExperienceList.length,
                   (i) => Container(
                     padding: const EdgeInsets.only(
-                        left: 20, right: 20, top: 10, bottom: 10),
+                        left: 20, right: 20, top: 20, bottom: 0),
                     margin: const EdgeInsets.symmetric(
                       horizontal: 30,
                     ),
                     decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.white.withAlpha(40), width: 1),
                         borderRadius: BorderRadius.circular(35),
                         color: ColorsHelper.secondaryCanvasColor),
                     child: ListTile(
@@ -45,12 +47,13 @@ class DExperiencePage extends StatelessWidget {
                             height: 10,
                           ),
                           Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                '(${dataController.siteData!.workExperience.workExperienceList[i].startTime} --> ${dataController.siteData!.workExperience.workExperienceList[i].endTime})',
-                                style: FontsHelper.fontUbuntu
-                                    .copyWith(color: Colors.grey, fontSize: 12),
-                              )),
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              '${dataController.siteData!.workExperience.workExperienceList[i].startTime} - ${dataController.siteData!.workExperience.workExperienceList[i].endTime}',
+                              style: FontsHelper.fontUbuntu
+                                  .copyWith(color: Colors.grey, fontSize: 13),
+                            ),
+                          ),
                           const SizedBox(
                             height: 10,
                           ),
@@ -68,19 +71,23 @@ class DExperiencePage extends StatelessWidget {
                           )
                         ],
                       ),
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: Image.network(
-                          '${dataController.siteData!.workExperience.workExperienceList[i].companyLogoImageUrl}',
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const SizedBox.shrink();
-                          },
+                      leading: Container(
+                        margin: const EdgeInsets.only(right: 7),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image.network(
+                            '${dataController.siteData!.workExperience.workExperienceList[i].companyLogoImageUrl}',
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return const SizedBox.shrink();
+                            },
+                          ),
                         ),
                       ),
                       title: SelectableText(
                           '${dataController.siteData!.workExperience.workExperienceList[i].position} @ ${dataController.siteData!.workExperience.workExperienceList[i].companyName}',
                           style: FontsHelper.fontUbuntu.copyWith(
+                              height: 0.7,
                               fontSize: 20,
                               color: ColorsHelper.white,
                               fontWeight: FontWeight.bold)),

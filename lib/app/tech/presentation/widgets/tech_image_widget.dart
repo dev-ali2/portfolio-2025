@@ -17,7 +17,7 @@ class TechImageWidget extends StatefulWidget {
 class _TechImageWidgetState extends State<TechImageWidget> {
   final dataController = Get.find<DataController>();
   bool isHovering = false;
-  double _maxWidth = 90;
+  double _maxWidth = 100;
 
   @override
   void initState() {
@@ -38,7 +38,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
     textPainter.layout();
 
     setState(() {
-      _maxWidth = 90 + 10 + textPainter.width + 8;
+      _maxWidth = 70 + 10 + textPainter.width + 8;
     });
   }
 
@@ -65,7 +65,7 @@ class _TechImageWidgetState extends State<TechImageWidget> {
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
           padding: const EdgeInsets.all(4),
-          height: 70,
+          height: 60,
           width: _maxWidth,
           decoration: BoxDecoration(
               color: ColorsHelper.secondaryCanvasColor,
@@ -95,8 +95,8 @@ class _TechImageWidgetState extends State<TechImageWidget> {
                 widget.title,
                 style: FontsHelper.fontUbuntu.copyWith(
                     color: ColorsHelper.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15),
               ),
             ],
           ),

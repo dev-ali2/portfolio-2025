@@ -116,12 +116,16 @@ class DProjectWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: SelectableText(
+            child: Text(
+              overflow: TextOverflow.ellipsis,
               maxLines: 3,
+
               // _truncateDescription(project.shortDescription, 15)
               project.shortDescription,
-              style: FontsHelper.poppinsFont
-                  .copyWith(color: ColorsHelper.white, fontSize: 16),
+              style: FontsHelper.poppinsFont.copyWith(
+                  overflow: TextOverflow.ellipsis,
+                  color: ColorsHelper.white,
+                  fontSize: 16),
             ),
           ),
           SizedBox(

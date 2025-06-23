@@ -24,8 +24,8 @@ class TTechPage extends StatelessWidget {
                 PagesHeader(title: dataController.siteData!.tech.headerTitle),
                 Wrap(
                   alignment: WrapAlignment.center,
-                  spacing: 30,
-                  runSpacing: 30,
+                  spacing: 25,
+                  runSpacing: 25,
                   children: [
                     ...List.generate(
                       dataController.siteData!.tech.techList.length,

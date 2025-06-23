@@ -20,7 +20,7 @@ class MProjectDetailPopup extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.all(32),
           decoration: BoxDecoration(
-            color: ColorsHelper.canvasColor.withAlpha(230),
+            color: Colors.black.withAlpha(30),
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: ColorsHelper.white.withAlpha(100),
@@ -30,7 +30,7 @@ class MProjectDetailPopup extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(24),
@@ -142,7 +142,7 @@ class MProjectDetailPopup extends StatelessWidget {
                         Center(
                           child: Text(
                             textAlign: TextAlign.center,
-                            'Supported Platform',
+                            'Deployment Targets',
                             style: FontsHelper.poppinsFont.copyWith(
                               color: ColorsHelper.white,
                               fontWeight: FontWeight.w600,

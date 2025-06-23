@@ -32,6 +32,7 @@ migrate_working_dir/
 /build/
 *.env
 *config.env
+*test_data.dart
 
 # Symbolication related
 app.*.symbols

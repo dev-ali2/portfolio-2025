@@ -116,8 +116,9 @@ class TProjectWidget extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 13),
-            child: SelectableText(
-              maxLines: 2,
+            child: Text(
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
               // _truncateDescription(project.shortDescription, 15)
               project.shortDescription,
               style: FontsHelper.poppinsFont
@@ -134,12 +135,15 @@ class TProjectWidget extends StatelessWidget {
                   Get.dialog(DProjectDetailPopup(project: project));
                 },
                 child: Text(
-                  'View Info',
+                  'View more',
                   style: FontsHelper.poppinsFont.copyWith(
                       color: ColorsHelper.defaultPrimaryColor,
                       fontWeight: FontWeight.bold),
                 )),
           ),
+          const SizedBox(
+            height: 5,
+          )
         ],
       ),
     );

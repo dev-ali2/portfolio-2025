@@ -16,7 +16,7 @@ class DContactPage extends StatelessWidget {
         ? Container(
             key: contactPageKey,
             width: double.maxFinite,
-            padding: const EdgeInsets.only(left: 30, right: 30, bottom: 60),
+            padding: const EdgeInsets.only(left: 50, right: 50, bottom: 60),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               spacing: 60,

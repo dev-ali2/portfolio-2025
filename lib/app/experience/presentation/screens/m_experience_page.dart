@@ -28,8 +28,10 @@ class MExperiencePage extends StatelessWidget {
                       .siteData!.workExperience.workExperienceList.length,
                   (i) => Container(
                     padding: const EdgeInsets.only(
-                        left: 5, right: 5, top: 10, bottom: 10),
+                        left: 5, right: 5, top: 20, bottom: 0),
                     decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.white.withAlpha(40), width: 1),
                         borderRadius: BorderRadius.circular(35),
                         color: ColorsHelper.secondaryCanvasColor),
                     child: ListTile(
@@ -44,12 +46,12 @@ class MExperiencePage extends StatelessWidget {
                           Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                '(${dataController.siteData!.workExperience.workExperienceList[i].startTime} --> ${dataController.siteData!.workExperience.workExperienceList[i].endTime})',
+                                '${dataController.siteData!.workExperience.workExperienceList[i].startTime} - ${dataController.siteData!.workExperience.workExperienceList[i].endTime}',
                                 style: FontsHelper.fontUbuntu
-                                    .copyWith(color: Colors.grey, fontSize: 10),
+                                    .copyWith(color: Colors.grey, fontSize: 11),
                               )),
                           const SizedBox(
-                            height: 5,
+                            height: 7,
                           ),
                           ...List.generate(
                             dataController.siteData!.workExperience
@@ -65,17 +67,20 @@ class MExperiencePage extends StatelessWidget {
                           )
                         ],
                       ),
-                      leading: SizedBox(
-                        height: 40,
-                        width: 40,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5),
-                          child: Image.network(
-                            '${dataController.siteData!.workExperience.workExperienceList[i].companyLogoImageUrl}',
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) {
-                              return const SizedBox.shrink();
-                            },
+                      leading: Container(
+                        margin: const EdgeInsets.only(right: 10),
+                        child: SizedBox(
+                          height: 40,
+                          width: 40,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Image.network(
+                              '${dataController.siteData!.workExperience.workExperienceList[i].companyLogoImageUrl}',
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const SizedBox.shrink();
+                              },
+                            ),
                           ),
                         ),
                       ),
