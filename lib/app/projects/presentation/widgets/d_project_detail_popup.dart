@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:portfolio_2025/core/common/models/featured_work_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
+import 'package:portfolio_2025/helpers/get_icon_helper.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DProjectDetailPopup extends StatelessWidget {
@@ -138,7 +139,8 @@ class DProjectDetailPopup extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Icon(
-                                    platform.platformIcon,
+                                    GetIconHelper.getIcon(
+                                        platform.platformName),
                                     color: _getPlatformColor(
                                         platform.platformName),
                                     size: 20,

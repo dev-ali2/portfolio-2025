@@ -7,6 +7,7 @@ import 'package:portfolio_2025/app/projects/presentation/widgets/d_project_detai
 import 'package:portfolio_2025/core/common/models/featured_work_model.dart';
 import 'package:portfolio_2025/helpers/colors_helper.dart';
 import 'package:portfolio_2025/helpers/fonts_helper.dart';
+import 'package:portfolio_2025/helpers/get_icon_helper.dart';
 
 class TProjectWidget extends StatelessWidget {
   final FeaturedProjectModel project;
@@ -96,7 +97,7 @@ class TProjectWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(50),
                       color: ColorsHelper.secondaryCanvasColor),
                   child: Icon(
-                    project.platforms[i].platformIcon,
+                    GetIconHelper.getIcon(project.platforms[i].platformName),
                     color: _getPlatformColor(project.platforms[i].platformName),
                   ),
                 ),

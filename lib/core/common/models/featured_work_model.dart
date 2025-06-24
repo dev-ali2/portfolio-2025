@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 class FeaturedWorkModel {
   bool isEnabled;
   String headerTitle;
@@ -89,24 +87,24 @@ class FeaturedProjectModel {
 
 class AvailablePlatformModel {
   String platformName;
-  IconData platformIcon;
+  // IconData platformIcon;
 
   AvailablePlatformModel({
     required this.platformName,
-    required this.platformIcon,
+    // required this.platformIcon,
   });
 
   factory AvailablePlatformModel.fromJson(Map<String, dynamic> json) {
     return AvailablePlatformModel(
       platformName: json['platformName'],
-      platformIcon: IconData(json['platformIcon'], fontFamily: 'MaterialIcons'),
+      // platformIcon: IconData(json['platformIcon'], fontFamily: 'MaterialIcons'),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'platformName': platformName,
-      'platformIcon': platformIcon.codePoint,
+      // 'platformIcon': platformIcon.codePoint,
     };
   }
 }
