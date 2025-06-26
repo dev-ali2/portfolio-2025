@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:appwrite/appwrite.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:portfolio_2025/core/common/controllers/data_controller.dart';
+import 'package:portfolio_2025/helpers/site_visit_log_helper.dart';
 import 'package:portfolio_2025/test_data.dart';
 
 class AppwriteController extends GetxController {
@@ -22,6 +24,9 @@ class AppwriteController extends GetxController {
       isAppwriteInitialized = true;
       log('Appwrite initialized successfully.');
       // getSiteData();
+      if (!kDebugMode) {
+        SiteVisitLogHelper.logSiteData(client);
+      }
     } catch (e) {
       log('Error in initializing app write : $e');
     }
